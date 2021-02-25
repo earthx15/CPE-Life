@@ -9,6 +9,5 @@ int random (int n) {
 }
 
 int main () {
-    srand(time(0));
-    random(100); // random 0 to 100;
+    cout << "hello";
 }
