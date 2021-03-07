@@ -1,7 +1,10 @@
-#pragma once
+#ifndef  GAME_H
+#define GAME_H
 
-#include "Gamestate.h"
-#include "MainMenuState.h"
+
+
+
+#include "MainMenustate.h"
 
 
 
@@ -17,12 +20,12 @@ private:
 
 	std::stack<State*> states;
 
-	
+
 	//Initialization
 
 	void initWindows();
 	void initStates();
-	
+
 public:
 
 	//Constructors / Destructors
@@ -31,7 +34,7 @@ public:
 
 
 	//Functions
-	
+
 	//Regular
 	void endApplication();
 
@@ -39,10 +42,10 @@ public:
 	void updateDt();
 	void updateSFMLEvent();
 	void update();
-	
+
 	//Render
 	void render();
-	
+
 	//Core
 	void run();
 
@@ -51,3 +54,4 @@ public:
 
 };
 
+#endif 

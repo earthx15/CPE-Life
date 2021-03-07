@@ -23,7 +23,7 @@ void Game::initWindows()
     }
 
 
-	this->window = new sf::RenderWindow(window_bounds, title);
+    this->window = new sf::RenderWindow(window_bounds, title);
     this->window->setFramerateLimit(frame_limit);
     this->window->setVerticalSyncEnabled(vertical_sync_enable);
 }
@@ -31,11 +31,11 @@ void Game::initWindows()
 
 void Game::initStates()
 {
-    
-    this->states.push(new GameState(this->window));
-    //this->states.push(new MainMenuState(this->window));
-    
-    
+
+    //this->states.push(new GameState(this->window));
+    this->states.push(new MainMenuState(this->window, &this->states));
+
+
 
 }
 
@@ -44,15 +44,15 @@ void Game::initStates()
 //Constructors / Destructors
 Game::Game()
 {
-	this->initWindows();
+    this->initWindows();
     this->initStates();
-    std::cout << "Game Start!";
+    std::cout << "\nGame Start!\n";
 }
 
 Game::~Game()
 {
-	delete this->window;
-    
+    delete this->window;
+
     while (!this->states.empty())
     {
         delete this->states.top();
@@ -63,13 +63,13 @@ Game::~Game()
 
 //Functions
 void Game::updateDt()
-    {
+{
     this->dt = this->dtClock.restart().asSeconds();
 
 
     //system("cls");
     //std::cout << this->dt << "\n";
-    }
+}
 
 void Game::endApplication()
 {
@@ -90,11 +90,11 @@ void Game::updateSFMLEvent()
 void Game::update()
 {
     this->updateSFMLEvent();
-    
+
     if (!this->states.empty())
     {
-     this->states.top()->update(this->dt);
-     
+        this->states.top()->update(this->dt);
+
         if (this->states.top()->getQuit())
         {
             this->states.top()->endState();
@@ -102,7 +102,7 @@ void Game::update()
             this->states.pop();
         }
     }
-    else 
+    else
     {
         this->endApplication();
         this->window->close();
@@ -129,5 +129,3 @@ void Game::run()
         this->render();
     }
 }
-
-
