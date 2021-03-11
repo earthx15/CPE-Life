@@ -11,7 +11,10 @@ class GameState :
 {
 private:
     sf::RectangleShape Background;
-
+    sf::RectangleShape BackgroundName;
+    sf::RectangleShape BackgroundLog;
+    sf::RectangleShape BackgroundSituation;
+    sf::RectangleShape BackgroundStatus;
     
     //Buttons(can be clicked)
     Button* backToState_btn;
@@ -24,8 +27,18 @@ private:
     Button* dataIII;
     Button* dataIV;
     Button* dataV;
+   
+    //functions
+    int random(int n);
+
     //(data)
     int age = 0;
+    
+    int Happiness =  60 + random(31);
+    int Health = 70 +  random(31);
+    int Smart = 5 + random(96);
+    int Look = 20 + random(81);
+    int Moral = 0 +  random(101);
 
 
 public:
