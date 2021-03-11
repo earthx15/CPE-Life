@@ -11,6 +11,7 @@
 #include <sstream>
 #include <stack>
 #include <map>
+#include <string>
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>

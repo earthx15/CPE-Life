@@ -12,7 +12,21 @@ class GameState :
 private:
     sf::RectangleShape Background;
 
+    
+    //Buttons(can be clicked)
     Button* backToState_btn;
+    Button* aged_btn;
+    
+    //dataText(showing data)
+    Button* ageShow;
+    Button* dataI;
+    Button* dataII;
+    Button* dataIII;
+    Button* dataIV;
+    Button* dataV;
+    //(data)
+    int age = 0;
+
 
 public:
     GameState(sf::RenderWindow* window, std::stack<State*>* states);
@@ -21,9 +35,17 @@ public:
     //Functions
     void endState();
 
+    void updateAge();
+
+    //update
     void updateButtons();
     void updateInputs(const float& dt);
+    void updateText();
     void update(const float& dt);
+
+
+    
+    //render
     void render(sf::RenderTarget* target);
 
 };

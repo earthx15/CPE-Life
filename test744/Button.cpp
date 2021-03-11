@@ -1,9 +1,12 @@
 #include "Button.h"
 
+//button
 Button::Button(float x, float y, float width, float height,
 	sf::Font* font, std::string text,
-	sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor)
+	sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor, sf::Color textColor)
 {
+	
+	
 	this->buttonState = BTN_IDLE;
 	
 	this->buttonShape.setPosition(sf::Vector2f(x, y));
@@ -12,7 +15,7 @@ Button::Button(float x, float y, float width, float height,
 	this->font = font;
 	this->buttonText.setFont(*this->font);
 	this->buttonText.setString(text);
-	this->buttonText.setFillColor(sf::Color::White);
+	this->buttonText.setFillColor(textColor);
 	this->buttonText.setCharacterSize(25);
 	this->buttonText.setPosition(
 		this->buttonShape.getPosition().x + (this->buttonShape.getGlobalBounds().width / 2.f) - this->buttonText.getGlobalBounds().width / 2.f,
@@ -26,9 +29,30 @@ Button::Button(float x, float y, float width, float height,
 	this->buttonShape.setFillColor(this->idleColor);
 }
 
-Button::~Button()
+//dataText
+Button::Button(float x, float y, float width, float height,
+	sf::Font* font, std::string text, int data, sf::Color textColor)
 {
 
+
+	this->buttonState = BTN_IDLE;
+	this->buttonText.setPosition(sf::Vector2f(x, y));
+	
+
+	this->font = font;
+	this->buttonText.setFont(*this->font);
+	this->buttonText.setString(text + std::to_string(data));
+	this->buttonText.setFillColor(textColor);
+	this->buttonText.setCharacterSize(25);
+	
+
+}
+
+
+
+Button::~Button()
+{
+	mode = 0;
 }
 
 const bool Button::isPressed() const
@@ -39,6 +63,7 @@ const bool Button::isPressed() const
 	return false;
 }
 
+//updateButton
 void Button::update(const sf::Vector2f mousePos)
 {
 	
@@ -53,9 +78,17 @@ void Button::update(const sf::Vector2f mousePos)
 		//ACTIVE
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
+			if(mode == 0)
 			this->buttonState = BTN_ACTIVE;
+			mode = 1;
 		}
+
+		if (!sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			mode = 0;
+
 	}
+	else
+		mode = 0;
 
 	switch (buttonState)
 	{
@@ -80,8 +113,18 @@ void Button::update(const sf::Vector2f mousePos)
 
 }
 
-void Button::render(sf::RenderTarget* target)
+//render button
+void Button::renderButton(sf::RenderTarget* target)
 {
 	target->draw(this->buttonShape);
 	target->draw(this->buttonText);
 }
+
+//render text
+void Button::renderText(sf::RenderTarget* target)
+{
+	target->draw(this->buttonText);
+}
+
+
+

@@ -6,9 +6,9 @@ MainMenuState::MainMenuState(sf::RenderWindow* window, std::stack<State*>* state
 	this->initFont();
 
 	//(x, y, width, height, font, "text", idle color, hover colot, active color)
-	this->gamestate_btn = new Button(100, 100, 150, 50, &this->font, "NEW GAME", sf::Color(70,70,70,200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200));
-	this->acheivment_btn = new Button(100, 200, 150, 50, &this->font, "ACHEIVMENT", sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200));
-	this->exit_btn = new Button(100, 300, 150, 50, &this->font, "EXIT", sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200));
+	this->gamestate_btn = new Button(100, 100, 150, 50, &this->font, "NEW GAME", sf::Color(70,70,70,200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	this->acheivment_btn = new Button(100, 200, 150, 50, &this->font, "ACHEIVMENT", sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	this->exit_btn = new Button(100, 300, 150, 50, &this->font, "EXIT", sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 
 
@@ -86,8 +86,8 @@ void MainMenuState::render(sf::RenderTarget* target)
 
 	target->draw(this->Background);
 
-	this->gamestate_btn->render(target);
-	this->acheivment_btn->render(target);
-	this->exit_btn->render(target);
+	this->gamestate_btn->renderButton(target);
+	this->acheivment_btn->renderButton(target);
+	this->exit_btn->renderButton(target);
 	
 }
