@@ -6,7 +6,8 @@
 
 using namespace std;
 int cheak=0;
-string EVcommon[] = {"Tooth_decay","injec_vaccine","have_yungbra","injured_from_toys","bully","puppy_love","skipping_class","true_friend","old_camera","smoke","car","copy_theexam","activity","party","boss","cheat","Promote","retire"};
+string EVcommon[] = {"Tooth_decay","injec_vaccine","have_yungbra","injured_from_toys","bully","puppy_love","skipping_class",
+					"true_friend","old_camera","smoke","car","copy_theexam","activity","party","boss","cheat","Promote","retire"};
 string EVspacial[] = {"",""};
 string Evnow;
 int SizeEV; 
