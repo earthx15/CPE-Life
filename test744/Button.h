@@ -11,6 +11,7 @@ class Button
 private:
 	short unsigned buttonState;
 
+
 	sf::RectangleShape buttonShape;
 	sf::Font* font;
 	sf::Text buttonText;
@@ -23,11 +24,15 @@ private:
 	bool mode;
 
 public:
+	//Button for click
 	Button(float x, float y, float width, float height,
-		sf::Font * font, std::string text, 
-		sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor, sf::Color textColor);
-	Button(float x, float y, float width, float height,
-		sf::Font* font, std::string text, int data, sf::Color textColor);
+		sf::Font * font, std::string text, int textSize,  
+		sf::Color idleColor, sf::Color hoverColor, 
+		sf::Color activeColor, sf::Color textColor);
+	
+	//Text showing
+	Button(float x, float y, sf::Font* font, int textSize, std::string text, int data, sf::Color textColor);
+	
 	~Button();
 
 	//Acessesors

@@ -5,6 +5,7 @@
 #include "Button.h"
 #include "MainMenuState.h"
 
+
 class GameState :
 
     public State
@@ -19,6 +20,11 @@ private:
     //Buttons(can be clicked)
     Button* backToState_btn;
     Button* aged_btn;
+
+    Button* eventSelectButton1;
+    Button* eventSelectButton2;
+    Button* eventSelectButton3;
+    Button* eventSelectButton4;
     
     //dataText(showing data)
     Button* ageShow;
@@ -27,9 +33,10 @@ private:
     Button* dataIII;
     Button* dataIV;
     Button* dataV;
-   
-    //functions
-    int random(int n);
+
+    Button* eventTextButton;
+
+    
 
     //(data)
     int age = 0;
@@ -40,26 +47,74 @@ private:
     int Look = 20 + random(81);
     int Moral = 0 +  random(101);
 
+    
+    //Event generating code
+
+    bool eventCheck;
+    /*std::string EVcommon[] = { "Tooth_decay","injec_vaccine","have_yungbra","injured_from_toys","bully","puppy_love","skipping_class","true_friend","old_camera","smoke","car","copy_theexam","activity","party","boss","cheat","Promote","retire" };
+    std::string EVspacial[] = { "","" };*/
+    int babyEvent;
+    int childEvent;
+    int primaryEvent;
+    int seccondaryEvent;
+    int bachelorEvent;
+    int primaryAdultEvent;
+    int secondaryAdultEvent;
+    int elderlyEvent;
+
+    int Evnow;
+    int randtype;
+
+    std::string eventText;
+    std::string eventSelectText1;
+    std::string eventSelectText2;
+    std::string eventSelectText3;
+    std::string eventSelectText4;
+   
+    
+
+    
+
+
 
 public:
     GameState(sf::RenderWindow* window, std::stack<State*>* states);
     virtual ~GameState();
 
     //Functions
+    int random(int n, int x = 0);
+
+    void creatButtons(int n, std::string string1 = NULL, std::string string2 = NULL, std::string string3 = NULL, std::string string4 = NULL);
+
+    void deleteButtons(int n);
+    
     void endState();
 
     void updateAge();
 
+    //Event generating code
+    void Ev(int age);
+    void creatEvent(int Evnow);
+    
+    
+    
+    
     //update
     void updateButtons();
     void updateInputs(const float& dt);
     void updateText();
+
+    void updateEvent();
+   
     void update(const float& dt);
-
-
+    
     
     //render
     void render(sf::RenderTarget* target);
+
+
+    
+
 
 };
 

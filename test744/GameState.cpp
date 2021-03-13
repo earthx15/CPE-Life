@@ -70,10 +70,53 @@ int GameState::random(int n, int x)
 void GameState::creatButtons(int n, std::string string1, std::string string2, std::string string3, std::string string4)
 {
 	//(x, y, width, height, font, "text", text size , idle color, hover color, active color, text color)
-	//(x, y, กว้าง, ยาว, ฟ้อนต?, ข้อความ, ขนาดข้อความ , สีปุ่มตอนปกติ, สีปุ่มตอนปกติ, สีปุ่มตอนปกติ, text color)
-	if (n = 2) {
-		this->eventSelectButton1 = new Button(600, 500, 150, 50, &this->font, string1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-		this->eventSelectButton2 = new Button(600, 500, 150, 50, &this->font, string1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	//(x, y, กว้าง, ยาว, ฟ้อนต์, ข้อความ, ขนาดข้อความ , สีปุ่มตอนปกติ, สีปุ่มตอนปกติ, สีปุ่มตอนปกติ, สีข้อความ)
+	if (n == 2) {
+		this->eventSelectButton1 = new Button(600, 100, 150, 50, &this->font, string1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+		this->eventSelectButton2 = new Button(600, 200, 150, 50, &this->font, string2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+		
+		this->eventSelectButton1->renderButton(this->window);
+		this->eventSelectButton2->renderButton(this->window);
+	}
+	else if (n == 3) {
+		this->eventSelectButton1 = new Button(600, 100, 150, 50, &this->font, string1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+		this->eventSelectButton2 = new Button(600, 200, 150, 50, &this->font, string2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+		this->eventSelectButton3 = new Button(600, 300, 150, 50, &this->font, string3, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+		
+		this->eventSelectButton1->renderButton(this->window);
+		this->eventSelectButton2->renderButton(this->window);
+		this->eventSelectButton3->renderButton(this->window);
+	}
+	else if (n == 4) {
+		this->eventSelectButton1 = new Button(600, 100, 150, 50, &this->font, string1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+		this->eventSelectButton2 = new Button(600, 200, 150, 50, &this->font, string2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+		this->eventSelectButton3 = new Button(600, 300, 150, 50, &this->font, string3, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+		this->eventSelectButton4 = new Button(600, 400, 150, 50, &this->font, string4, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+		this->eventSelectButton1->renderButton(this->window);
+		this->eventSelectButton2->renderButton(this->window);
+		this->eventSelectButton3->renderButton(this->window);
+		this->eventSelectButton4->renderButton(this->window);
+	}
+}
+
+void GameState::deleteButtons(int n)
+{
+	if (n == 2) {
+		delete this->eventSelectButton1;
+		delete this->eventSelectButton2;
+	}
+	else if (n == 3) {
+		delete this->eventSelectButton1;
+		delete this->eventSelectButton2;
+		delete this->eventSelectButton3;
+
+	}
+	else if (n == 4) {
+		delete this->eventSelectButton1;
+		delete this->eventSelectButton2;
+		delete this->eventSelectButton3;
+		delete this->eventSelectButton4;
 	}
 }
 
@@ -91,24 +134,32 @@ void GameState::updateAge()
 
 void GameState::Ev(int age)
 {
+	std::cout << "Ev\n";
+		
 		randtype = random(101);
 		eventCheck = 0;
+
+		Evnow = 0;
+			return;
 
 		//เหตุการณ์ปกติ 
 		if (randtype >= 10 && randtype <= 100) {
 			Evnow = random(20);
+			return;
 		}
 
 		//ตายเพราะแม่ทำแท้ง
 		else if (randtype == 0 && age == 0) {
 
 			std::cout << "you death" << std::endl;
+			return;
 		}
 
 		//เหตุการณ์พิเศษ
 		else {
 
 			Evnow = random(10,20);
+			return;
 		}
 	
 }
@@ -118,137 +169,88 @@ void GameState::creatEvent(int Evnow)
 	if (age >= 0 && age <= 5) { // baby
 		switch (Evnow) {
 		case 0: //Tooth_decay
-			
-			
+
+			std::cout << "event1\n";
+			eventCheck = 1;
+
+			//ข้อความเหตุการณ์
+			eventText = "Go to a doctor to treat your Tooth";
+
+			//ข้อความตัวเลือก
+			eventSelectText1 = "aaa";
+			eventSelectText2 = "bbb";
+
+			//this->creatButtons(2, eventSelectText1, eventSelectText2);
+
+			this->eventTextButton = new Button(100, 0, &this->font, 25, eventText, age, sf::Color::White);
+			this->eventTextButton->renderButton(this->window);
+
+			while (1)
+			{
+				if (this->eventSelectButton1->isPressed())
+				{
+					//ผลกระทบถ้าเลือกข้อ1
+
+					delete this->eventSelectButton1;
+					delete this->eventTextButton;
+					break;
+				}
+
+				if (this->eventSelectButton2->isPressed())
+				{
+					//ผลกระทบถ้าเลือกข้อ2
+
+					delete this->eventSelectButton2;
+					delete this->eventTextButton;
+					break;
+				}
+
+			}
+
 			std::cout << "Go to a doctor to treat your Tooth" << std::endl;
-			
-			Health -= random(6) + 5; eventCheck = 1;
-			break;
+
+			//Health -= random(6) + 5;
+
 		case 1: //injec_vaccine
-			std::cout << "Go to hospital to inject a vaccine" << std::endl;
-			
-			Health += random(6) + 10; eventCheck = 1;
-			break;
-		case 2: //have_yungbra
-			cout << "congratulation you have a yong brather" << endl;
-			
-			Happiness += 20; eventCheck = 1;
-			break;
-		case 3: //injured_from_toys
-			cout << "you injured from toys"
-				yes : non;
-			
-		no: Health += 10; eventCheck = 1;
-			break;
+			eventCheck = 1;
+
+			//ข้อความเหตุการณ์
+			eventText = "Go to a doctor to treat your Tooth";
+
+			//ข้อความตัวเลือก
+			eventSelectText1 = "sss";
+			eventSelectText2 = "ddd";
+
+			this->creatButtons(2, eventSelectText1, eventSelectText2);
+
+			this->eventTextButton = new Button(100, 100, &this->font, 25, eventText, age, sf::Color::White);
+			this->eventTextButton->renderButton(this->window);
+
+			while (1)
+			{
+				if (this->eventSelectButton1->isPressed())
+				{
+					//ผลกระทบถ้าเลือกข้อ1
+
+					delete this->eventSelectButton1;
+					delete this->eventTextButton;
+					break;
+				}
+
+				if (this->eventSelectButton2->isPressed())
+				{
+					//ผลกระทบถ้าเลือกข้อ2
+
+					delete this->eventSelectButton2;
+					delete this->eventTextButton;
+					break;
+				}
+
+			}
+
 		}
+
 	}
-//	else (age >= 6 && age <= 14) { // primary
-//		case "bully":
-//			cout << "you are bullied" << endl;
-//			talk a teacher : if (Moral >= 50) {
-//				if (rand(3) > 0) {
-//					teacher protect you : Heath += 10;
-//				}
-//				else teacher ignore : Heath -= 10; look -= 10;
-//			}
-//			else {
-//				teacher ignore : Heath -= 10; look -= 10;
-//			}cheak = 1;
-//		argut: Heath -= 20; look -= 20; cheak = 1;
-//			bully Someone : Happiness += 10; Moral -= 20; cheak = 1;
-//		notthing: Heath -= 5; look -= 5; cheak = 1;
-//			break;
-//		case "puppy_love":
-//			if (look >= 80) {
-//				cout << "some one confess about lovenses to you " << endl;
-//			yes: Happiness += 30; cheak = 1;
-//			no: not thing; cheak = 1;
-//			}
-//		case "skipping_class":
-//			cout << "your friends persuade you to skipping class" << endl;
-//		yes: happineess += 20; look -= 20; smart -= 30; cheak = 1;
-//		no: look += 5; smart += 15; cheak = 1;
-//			noand blame friends : if (random(101 <= 40) {
-//				your friends not satisfied; Happiness -= 15;
-//			}
-//			else {
-//				your friends understand you; look += 5; start += 15; Happiness += 10;
-//			}cheak = 1;
-//		case "true_friend":
-//			cout << "you find true friend" << endl;
-//				Happiness += 10; cheak = 1;
-//		case "old_camera":
-//			cout << "you find dad's old camera" << endl;
-//			repair: Happiness += 5; cheak = 1;
-//		notthing: cheak = 1;
-//	}
-//else (age >= 15 && age <= 18) { // scondary
-//		case "smoke":
-//			cout << "A friend invited me to smoke" << endl;
-//		agree: moral -= 20; Happiness += 10; look -= 10; Heath -= 15; cheak = 1;
-//		reject: look += 10; cheak = 1;
-//		case "skipping_class":
-//			cout << "your friends persuade you to skipping class" << endl;
-//		yes: happineess += 20; look -= 20; smart -= 30; cheak = 1;
-//		no: look += 5; smart += 15; cheak = 1;
-//			noand blame friends : if (random(101 <= 40) {
-//				your friends not satisfied; Happiness -= 15;
-//			}
-//			else {
-//				your friends understand you; look += 5; start += 15; Happiness += 10;
-//			} cheak = 1;
-//	}
-//else (age >= 19 && age <= 22) { // bachelor
-//		case "car":
-//			cout << "Parents bought a car for" << endl;
-//				Happiness += 15; cheak = 1;
-//		case "copy_theexam":
-//			cout << "A friend asked to copy the exam" << endl;
-//		agree: Happiness += 10; moral -= 10; cheak = 1;
-//		no: cheak = 1;
-//			Tell the teacher : look -= 20; cheak = 1;
-//		case "activity":
-//			cout << "Enter the activity" << endl;
-//		go: look += 10; cheak = 1;
-//		no: Happiness += 5; cheak = 1; cheak = 1;
-//		Cursingsenior: look -= 20; Happiness += 10; cheak = 1;
-//	}
-//else (age >= 23 && age <= 40) { // primary adult
-//		case "party":
-//			cout << "The party" << endl;
-//		go: look += 5; cheak = 1;
-//		no: look -= 10; cheak = 1;
-//		case "boss":
-//			cout << "Being cursed by the boss" << endl;
-//		sorry: Happiness -= 5; look -= 5; cheak = 1;
-//		retaliate: Happiness += 10 look -= 15; cheak = 1;
-//		Resign: "lost job"; cheak = 1;
-//		case "cheat":
-//			cout << "A friend who works to defraud company money" << endl;
-//		join: Happiness += 10; look -= 20; moral -= 20; cheak = 1;
-//		tellboss: "friend lost job"; cheak = 1;
-//
-//	}
-//else (age >= 41 && age <= 60) { // second adult
-//		case "Promote":
-//			cout << "Promote" << endl;
-//		case "boss":
-//			cout << "Being cursed by the boss" << endl;
-//		sorry: Happiness -= 5; look -= 5; cheak = 1;
-//		retaliate: Happiness += 10 look -= 15; cheak = 1;
-//		Resign: "lost job"; cheak = 1;
-//		case "retire":
-//			cout << "you retire"; cheak = 1;
-//	}
-//else // The elderly 
-//	{
-//
-//	}
-//	if (cheak == 0)
-//	{
-//		Ev();
-//	}
-//
 }
 
 
@@ -268,7 +270,7 @@ void GameState::updateButtons()
 	{
 		age++;
 		this->updateAge();
-		updateEvent();
+		this->updateEvent();
 		
 	}
 }
@@ -302,8 +304,10 @@ void GameState::updateText()
 
 void GameState::updateEvent()
 {
-	void Ev(int age);
-	void creatEvent(std::string Evnow);
+	
+	
+	this->Ev(age);
+	this->creatEvent(Evnow);
 
 }
 

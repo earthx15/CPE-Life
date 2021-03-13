@@ -2,7 +2,7 @@
 
 //button
 Button::Button(float x, float y, float width, float height,
-	sf::Font* font, std::string text,
+	sf::Font* font, std::string text, int textSize,
 	sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor, sf::Color textColor)
 {
 	
@@ -16,10 +16,10 @@ Button::Button(float x, float y, float width, float height,
 	this->buttonText.setFont(*this->font);
 	this->buttonText.setString(text);
 	this->buttonText.setFillColor(textColor);
-	this->buttonText.setCharacterSize(25);
+	this->buttonText.setCharacterSize(textSize);
 	this->buttonText.setPosition(
 		this->buttonShape.getPosition().x + (this->buttonShape.getGlobalBounds().width / 2.f) - this->buttonText.getGlobalBounds().width / 2.f,
-		this->buttonShape.getPosition().y + (this->buttonShape.getGlobalBounds().height / 2.f) - this->buttonText.getGlobalBounds().height / 2.f
+		this->buttonShape.getPosition().y + (this->buttonShape.getGlobalBounds().height / 3.f) - this->buttonText.getGlobalBounds().height / 2.f
 	);
 
 	this->idleColor = idleColor;
@@ -30,8 +30,7 @@ Button::Button(float x, float y, float width, float height,
 }
 
 //dataText
-Button::Button(float x, float y, float width, float height,
-	sf::Font* font, std::string text, int data, sf::Color textColor)
+Button::Button(float x, float y, sf::Font* font, int textSize, std::string text, int data, sf::Color textColor)
 {
 
 
@@ -43,7 +42,7 @@ Button::Button(float x, float y, float width, float height,
 	this->buttonText.setFont(*this->font);
 	this->buttonText.setString(text + std::to_string(data));
 	this->buttonText.setFillColor(textColor);
-	this->buttonText.setCharacterSize(25);
+	this->buttonText.setCharacterSize(textSize);
 	
 
 }
