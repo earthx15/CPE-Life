@@ -13,7 +13,7 @@ MainMenuState::MainMenuState(sf::RenderWindow* window, std::stack<State*>* state
 
 
 
-	this->Background.setSize(sf::Vector2f(window->getSize().x, window->getSize().y));
+	this->Background.setSize(sf::Vector2f(1080, 720));
 	this->Background.setFillColor(sf::Color::White);
 
 	std::cout << "\nStarting MainMenuState!\n";

@@ -11,6 +11,7 @@ class Button
 private:
 	short unsigned buttonState;
 
+	
 
 	sf::RectangleShape buttonShape;
 	sf::Font* font;

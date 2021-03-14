@@ -25,6 +25,9 @@ private:
     Button* eventSelectButton2;
     Button* eventSelectButton3;
     Button* eventSelectButton4;
+
+    int answer;
+    int buttonCount;
     
     //dataText(showing data)
     Button* ageShow;
@@ -53,6 +56,8 @@ private:
     bool eventCheck;
     /*std::string EVcommon[] = { "Tooth_decay","injec_vaccine","have_yungbra","injured_from_toys","bully","puppy_love","skipping_class","true_friend","old_camera","smoke","car","copy_theexam","activity","party","boss","cheat","Promote","retire" };
     std::string EVspacial[] = { "","" };*/
+    
+    //eventCount
     int babyEvent;
     int childEvent;
     int primaryEvent;
@@ -72,6 +77,7 @@ private:
     std::string eventSelectText4;
    
     
+    
 
     
 
@@ -84,13 +90,17 @@ public:
     //Functions
     int random(int n, int x = 0);
 
-    void creatButtons(int n, std::string string1 = NULL, std::string string2 = NULL, std::string string3 = NULL, std::string string4 = NULL);
+    void creatButtons(int buttonCount, std::string string1, std::string string2, std::string string3 = NULL, std::string string4 = NULL);
 
-    void deleteButtons(int n);
+    void renderButtons(int buttonCount);
+
+    void deleteButtons(int buttonCount);
     
     void endState();
 
-    void updateAge();
+    
+
+
 
     //Event generating code
     void Ev(int age);
@@ -103,9 +113,10 @@ public:
     void updateButtons();
     void updateInputs(const float& dt);
     void updateText();
-
+    void updateAge();
     void updateEvent();
-   
+    void updateAnswer();
+    
     void update(const float& dt);
     
     
