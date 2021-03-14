@@ -90,11 +90,7 @@ public:
     //Functions
     int random(int n, int x = 0);
 
-    void creatButtons(int buttonCount, std::string string1, std::string string2, std::string string3 = NULL, std::string string4 = NULL);
-
-    void renderButtons(int buttonCount);
-
-    void deleteButtons(int buttonCount);
+   
     
     void endState();
 
@@ -103,8 +99,7 @@ public:
 
 
     //Event generating code
-    void Ev(int age);
-    void creatEvent(int Evnow);
+    
     
     
     
@@ -114,8 +109,7 @@ public:
     void updateInputs(const float& dt);
     void updateText();
     void updateAge();
-    void updateEvent();
-    void updateAnswer();
+    
     
     void update(const float& dt);
     

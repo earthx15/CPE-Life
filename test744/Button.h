@@ -3,7 +3,7 @@
 
 #include "Entity.h"
 
-enum button_state{BTN_IDLE = 0, BTN_HOVER, BTN_ACTIVE};
+enum button_state{BTN_IDLE, BTN_HOVER, BTN_ACTIVE};
 
 class Button
 {
@@ -11,7 +11,12 @@ class Button
 private:
 	short unsigned buttonState;
 
-	
+	float x; 
+	float y;
+	float width; 
+	float height;
+	std::string text;
+	int textSize;
 
 	sf::RectangleShape buttonShape;
 	sf::Font* font;

@@ -3,14 +3,12 @@
 GameState::GameState(sf::RenderWindow* window, std::stack<State*>* states)
 	:State(window, states)
 {
-	age = 0;
-	eventCheck = 0;
+	
 	srand(time(0));
+	eventCheck = false;
 
 	this->initFont();
 
-
-	
 	//(x, y, width, height, font, "text", text size , idle color, hover color, active color, text color)
 	this->backToState_btn = new Button(600, 500, 150, 50, &this->font, "Back", 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 	this->aged_btn = new Button(415, 380, 250, 100, &this->font, "aged!", 60, sf::Color(70, 70, 70, 250), sf::Color(150, 150, 150, 250), sf::Color(20, 20, 20, 250), sf::Color::White);
@@ -74,49 +72,7 @@ int GameState::random(int n, int x)
 	return rand()%n+x;
 }
 
-void GameState::creatButtons(int buttonCount, std::string string1, std::string string2, std::string string3 = NULL, std::string string4 = NULL)
-{
-	//(x, y, width, height, font, "text", text size , idle color, hover color, active color, text color)
-	//(x, y, กว้าง, ยาว, ฟ้อนต์, ข้อความ, ขนาดข้อความ , สีปุ่มตอนปกติ, สีปุ่มตอนปกติ, สีปุ่มตอนปกติ, สีข้อความ)
-	if (buttonCount == 2) {
-		this->eventSelectButton1 = new Button(600, 100, 150, 50, &this->font, string1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-		this->eventSelectButton2 = new Button(600, 200, 150, 50, &this->font, string2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-		
-	}
-	else if (buttonCount == 3) {
-		this->eventSelectButton1 = new Button(600, 100, 150, 50, &this->font, string1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-		this->eventSelectButton2 = new Button(600, 200, 150, 50, &this->font, string2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-		this->eventSelectButton3 = new Button(600, 300, 150, 50, &this->font, string3, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-		
-	}
-	else if (buttonCount == 4) {
-		this->eventSelectButton1 = new Button(600, 100, 150, 50, &this->font, string1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-		this->eventSelectButton2 = new Button(600, 200, 150, 50, &this->font, string2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-		this->eventSelectButton3 = new Button(600, 300, 150, 50, &this->font, string3, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-		this->eventSelectButton4 = new Button(600, 400, 150, 50, &this->font, string4, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
-	}
-}
-
-void GameState::deleteButtons(int buttonCountn)
-{
-	if (buttonCount == 2) {
-		delete this->eventSelectButton1;
-		delete this->eventSelectButton2;
-	}
-	else if (buttonCount == 3) {
-		delete this->eventSelectButton1;
-		delete this->eventSelectButton2;
-		delete this->eventSelectButton3;
-
-	}
-	else if (buttonCount == 4) {
-		delete this->eventSelectButton1;
-		delete this->eventSelectButton2;
-		delete this->eventSelectButton3;
-		delete this->eventSelectButton4;
-	}
-}
 
 
 
@@ -130,82 +86,7 @@ void GameState::updateAge()
 	std::cout << age << " y/o\n\n";
 }
 
-void GameState::renderButtons(int buttonCount)
-{
-}
 
-void GameState::Ev(int age)
-{
-	std::cout << "Ev\n";
-		
-		randtype = random(101);
-		eventCheck = 0;
-
-		Evnow = 0;
-			return;
-
-		//เหตุการณ์ปกติ 
-		if (randtype >= 10 && randtype <= 100) {
-			Evnow = random(20);
-			return;
-		}
-
-		//ตายเพราะแม่ทำแท้ง
-		else if (randtype == 0 && age == 0) {
-
-			std::cout << "you death" << std::endl;
-			return;
-		}
-
-		//เหตุการณ์พิเศษ
-		else {
-
-			Evnow = random(10,20);
-			return;
-		}
-	
-}
-
-void GameState::creatEvent(int Evnow)
-{
-	if (age >= 0 && age <= 5) { // baby
-		switch (Evnow) {
-		case 0: //Tooth_decay
-
-			std::cout << "event1\n";
-			eventCheck = 1;
-
-			//ข้อความเหตุการณ์
-			eventText = "Go to a doctor to treat your Tooth";
-
-			//ข้อความตัวเลือก
-			eventSelectText1 = "aaa";
-			eventSelectText2 = "bbb";
-			
-			buttonCount = 2;
-
-			this->creatButtons(buttonCount, eventSelectText1, eventSelectText2);
-
-			std::cout << "Go to a doctor to treat your Tooth" << std::endl;
-
-			//Health -= random(6) + 5;
-
-		case 1: //injec_vaccine
-			eventCheck = 1;
-
-			//ข้อความเหตุการณ์
-			eventText = "Go to a doctor to treat your Tooth";
-
-			//ข้อความตัวเลือก
-			eventSelectText1 = "sss";
-			eventSelectText2 = "ddd";
-
-			
-
-		}
-
-	}
-}
 
 
 void GameState::updateButtons()
@@ -214,10 +95,6 @@ void GameState::updateButtons()
 	this->aged_btn->update(this->mousePosView);
 
 	this->eventSelectButton1->update(this->mousePosView);
-	this->eventSelectButton2->update(this->mousePosView);
-	this->eventSelectButton3->update(this->mousePosView);
-	this->eventSelectButton4->update(this->mousePosView);
-
 
 	if (this->backToState_btn->isPressed())
 	{
@@ -226,30 +103,22 @@ void GameState::updateButtons()
 
 	if (this->aged_btn->isPressed())
 	{
+		eventCheck = false;
 		age++;
 		this->updateAge();
-		this->updateEvent();
-		//eventSelectText1 = "aaa";
+
+		int x = rand() % 5;
+		if (x == 2)
+			eventCheck = true;
+
+
+		
 	}
 
 	if (this->eventSelectButton1->isPressed())
 	{
-		answer = 1;
-	}
-
-	if (this->eventSelectButton2->isPressed())
-	{
-		answer = 2;
-	}
-
-	if (this->eventSelectButton3->isPressed())
-	{
-		answer = 3;
-	}
-
-	if (this->eventSelectButton4->isPressed())
-	{
-		answer = 4;
+		Happiness++;
+		
 	}
 
 
@@ -284,14 +153,6 @@ void GameState::updateText()
 
 }
 
-void GameState::updateEvent()
-{
-	
-	
-	this->Ev(age);
-	this->creatEvent(Evnow);
-
-}
 
 
 
@@ -307,6 +168,8 @@ void GameState::update(const float& dt)
 	this->updateButtons();
 
 	this->updateText();
+
+	
 
 }
 
@@ -336,14 +199,7 @@ void GameState::render(sf::RenderTarget* target)
 	this->dataV->renderText(target);
 
 	
-	if (eventCheck)
-	{
+	if (eventCheck == true)
 		this->eventSelectButton1->renderButton(target);
-		this->eventSelectButton2->renderButton(target);
-	}
-	
-	
-	
-	
 
 }
