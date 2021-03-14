@@ -58,7 +58,7 @@ private:
     std::string EVspacial[] = { "","" };*/
     
     //eventCount
-    int babyEvent;
+    int babyEvent = 5;
     int childEvent;
     int primaryEvent;
     int seccondaryEvent;
@@ -67,8 +67,11 @@ private:
     int secondaryAdultEvent;
     int elderlyEvent;
 
+    int specialEvent;
+
     int Evnow;
     int randtype;
+    
 
     std::string eventText;
     std::string eventSelectText1;
@@ -99,8 +102,9 @@ public:
 
 
     //Event generating code
-    
-    
+    int eventRandom();
+
+    void creatEvent(int Evnow);
     
     
     
@@ -109,7 +113,7 @@ public:
     void updateInputs(const float& dt);
     void updateText();
     void updateAge();
-    
+    void updateAnswer();
     
     void update(const float& dt);
     
