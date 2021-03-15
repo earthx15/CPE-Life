@@ -16,7 +16,7 @@ private:
     sf::RectangleShape BackgroundLog;
     sf::RectangleShape BackgroundSituation;
     sf::RectangleShape BackgroundStatus;
-    
+
     //Buttons(can be clicked)
     Button* backToState_btn;
     Button* aged_btn;
@@ -28,7 +28,7 @@ private:
 
     int answer;
     int buttonCount;
-    
+
     //dataText(showing data)
     Button* ageShow;
     Button* dataI;
@@ -39,50 +39,50 @@ private:
 
     Button* eventTextButton;
 
-    
+
 
     //(data)
     int age = 0;
-    
-    int Happiness =  60 + random(31);
-    int Health = 70 +  random(31);
+
+    int Happiness = 60 + random(31);
+    int Health = 70 + random(31);
     int Smart = 5 + random(96);
     int Look = 20 + random(81);
-    int Moral = 0 +  random(101);
+    int Moral = 0 + random(101);
 
-    
+
     //Event generating code
 
     bool eventCheck;
     /*std::string EVcommon[] = { "Tooth_decay","injec_vaccine","have_yungbra","injured_from_toys","bully","puppy_love","skipping_class","true_friend","old_camera","smoke","car","copy_theexam","activity","party","boss","cheat","Promote","retire" };
     std::string EVspacial[] = { "","" };*/
-    
+
     //eventCount
-    int babyEvent = 2;
+    int babyEvent = 4;
     int childEvent = 5;
-    int primaryEvent = 5 ;
-    int seccondaryEvent = 5;
-    int bachelorEvent = 5;
-    int primaryAdultEvent = 5;
-    int secondaryAdultEvent = 5;
+    //int primaryEvent = 2;
+    int seccondaryEvent = 2;
+    int bachelorEvent = 3;
+    int primaryAdultEvent = 3;
+    int secondaryAdultEvent = 3;
     int elderlyEvent = 5;
 
     int specialEvent = 5;
 
     int Evnow;
     int randtype;
-    
+
 
     std::string eventText;
     std::string eventSelectText1;
     std::string eventSelectText2;
     std::string eventSelectText3;
     std::string eventSelectText4;
-   
-    
-    
 
-    
+
+
+
+
 
 
 
@@ -93,11 +93,11 @@ public:
     //Functions
     int random(int n, int x = 0);
 
-   
-    
+
+
     void endState();
 
-    
+
 
 
 
@@ -105,24 +105,24 @@ public:
     int eventRandom();
 
     void creatEvent(int Evnow);
-    
-    
-    
+
+
+
     //update
     void updateButtons();
     void updateInputs(const float& dt);
     void updateText();
     void updateAge();
     void updateAnswer();
-    
+
     void update(const float& dt);
-    
-    
+
+
     //render
     void render(sf::RenderTarget* target);
 
 
-    
+
 
 
 };
