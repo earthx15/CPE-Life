@@ -27,6 +27,7 @@ protected:
 	bool quit;
 
 	sf::Font font;
+	sf::Font ThaiFont;
 	sf::Vector2i mousePosScreen;
 	sf::Vector2i mousePosWindow;
 	sf::Vector2f mousePosView;

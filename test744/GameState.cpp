@@ -40,12 +40,12 @@ GameState::GameState(sf::RenderWindow* window, std::stack<State*>* states)
 	this->BackgroundStatus.setFillColor(sf::Color::Yellow);
 	this->BackgroundStatus.setPosition(0, 540);
 
-	this->eventSelectButton1 = new Button(600, 100, 150, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-	this->eventSelectButton2 = new Button(600, 200, 150, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-	this->eventSelectButton3 = new Button(600, 300, 150, 50, &this->font, eventSelectText3, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-	this->eventSelectButton4 = new Button(600, 400, 150, 50, &this->font, eventSelectText4, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	this->eventSelectButton3 = new Button(570, 370, 250, 50, &this->font, eventSelectText3, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	this->eventSelectButton4 = new Button(820, 370, 250, 50, &this->font, eventSelectText4, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
-	this->eventTextButton = new Button(900, 0, 150, 50, &this->font, eventText, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	this->eventTextButton = new Button(620, 60, 400, 200, &this->ThaiFont, eventText, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 
 	
@@ -71,7 +71,6 @@ GameState::~GameState()
 	
 }
 
-
 int GameState::random(int n, int x)
 {
 	return rand()%n+x;
@@ -82,13 +81,30 @@ void GameState::endState()
 	std::cout << "\nEnding GameState!\n";
 }
 
+
+//event
 int GameState::eventRandom()
 {
-	randtype = random(5,10);
-	if (randtype >= 10 && randtype <= 100) {;
-	Evnow = random(babyEvent);
+	randtype = random(101);
+	if (randtype >= 20 && randtype <= 100) {
+	if(age >= 0 && age <= 5)
+		Evnow = random(babyEvent);
+	if (age >= 6 && age <= 14)
+		Evnow = random(childEvent);
+	if (age >= 15 && age <= 18)
+		Evnow = random(seccondaryEvent);
+	if (age >= 19 && age <= 22)
+		Evnow = random(bachelorEvent);
+	if (age >= 23 && age <= 40)
+		Evnow = random(primaryAdultEvent);
+	if (age >= 41 && age <= 60)
+		Evnow = random(secondaryAdultEvent);
+	if (age >= 61)
+		Evnow = random(elderlyEvent);
 	}
 	else if (randtype == 0 && age == 0) {
+		Evnow -1;
+		
 		std::cout << "you death" << std::endl;
 	}
 	else {
@@ -106,18 +122,23 @@ void GameState::creatEvent(int Evnow)
 	{
 		switch (Evnow)
 		{
+		//baby
+		case -1:
+
+			
+			break;
+		
 		case 0:
 			
-			eventSelectText1 = "aaa";
-			eventSelectText2 = "bbb";
+			eventSelectText1 = "Go to see the doctor with dad.";
+			eventSelectText2 = "nope";
 
-			eventText = "ddd";
+			eventText = "Ouch! I have tooth decay. \nI shouldn't have eaten candies that much.";
 
 			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(600, 100, 150, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
-			this->eventSelectButton2 = new Button(600, 200, 150, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-
+			this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 
 			buttonCount = 2;
@@ -126,6 +147,21 @@ void GameState::creatEvent(int Evnow)
 			std::cout << "case 0\n";
 			break;
 		case 1:
+
+			eventSelectText1 = "qqq";
+			eventSelectText2 = "www";
+
+			eventText = "仴٪�ҧ";
+
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton2;
+			this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+
+
+			buttonCount = 2;
+			eventCheck = 1;
 
 			std::cout << "case 1\n";
 			break;
@@ -141,12 +177,83 @@ void GameState::creatEvent(int Evnow)
 
 			std::cout << "case 4\n";
 			break;
+		
+		
+		case 5:
+
+			break;
+		case 6:
+
+			break;
+
+		
+		}
+
+	}
+
+	//primary
+	if (age >= 6 && age <= 14)
+	{
+		switch (Evnow)
+		{
+		case 0:
+			break;
 		}
 	}
 
+	//secondary
+	if (age >= 15 && age <= 18)
+	{
+		switch (Evnow)
+		{
+		case 0:
+			break;
+		}
+	}
 
+	//bachelor
+	if (age >= 19 && age <= 22)
+	{
+		switch (Evnow)
+		{
+		case 0:
+			break;
+		}
+	}
+	
+	//primaryAdult
+	if (age >= 23 && age <= 40)
+	{
+		switch (Evnow)
+		{
+		case 0:
+			break;
+		}
+	}
+	
+	//secondaryAdult
+	if (age >= 41 && age <= 60)
+	{
+		switch (Evnow)
+		{
+		case 0:
+			break;
+		}
+	}
+	
+	//eldery
+	if (age >= 61)
+	{
+		switch (Evnow)
+		{
+		case 0:
+			break;
+		}
+	}
 }
 
+
+//update
 void GameState::updateAge()
 {
 	std::cout << age << " y/o\n\n";
@@ -154,36 +261,94 @@ void GameState::updateAge()
 
 void GameState::updateAnswer()
 {
-	switch (Evnow)
+	if (age >= 0 && age <= 5)
 	{
-	case 0:
-		switch (answer)
+		switch (Evnow)
 		{
+
+		case 0:
+			switch (answer)
+			{
+			case 1:
+				Happiness++;
+				answer = 0;
+				break;
+			case 2:
+				Health++;
+				answer = 0;
+				break;
+			}
 		case 1:
-			Happiness++;
-			answer = 0;
 			break;
 		case 2:
-			Health++;
-			answer = 0;
+			break;
+		case 3:
+			break;
+		case 4:
 			break;
 		}
-	case 1:
-		break;
-	case 2:
-		break;
-	case 3:
-		break;
-	case 4:
-		break;
 	}
+	
+	if (age >= 6 && age <= 14)
+	{
+		switch (Evnow)
+		{
+		case 0:
+			break;
+		}
+	}
+
+	if (age >= 15 && age <= 18)
+	{
+		switch (Evnow)
+		{
+		case 0:
+			break;
+		}
+	}
+
+	if (age >= 19 && age <= 22)
+	{
+		switch (Evnow)
+		{
+		case 0:
+			break;
+		}
+	}
+
+	if (age >= 23 && age <= 40)
+	{
+		switch (Evnow)
+		{
+		case 0:
+			break;
+		}
+	}
+
+	if (age >= 41 && age <= 60)
+	{
+		switch (Evnow)
+		{
+		case 0:
+			break;
+		}
+	}
+
+	if (age >= 61)
+	{
+		switch (Evnow)
+		{
+		case 0:
+			break;
+		}
+	}
+
 }
-
-
 
 void GameState::updateButtons()
 {
 	this->backToState_btn->update(this->mousePosView);
+	
 	this->aged_btn->update(this->mousePosView);
 
 	this->eventSelectButton1->update(this->mousePosView);
@@ -198,12 +363,16 @@ void GameState::updateButtons()
 
 	if (this->aged_btn->isPressed())
 	{
-		answer = 0;
-		eventCheck = false;
-		age++;
-		this->updateAge();
+		if (!eventCheck)
+		{
+			answer = 0;
+			eventCheck = false;
+			age++;
+			this->updateAge();
 
-		this->creatEvent(eventRandom());
+			this->creatEvent(eventRandom());
+		}
+		
 
 	}
 
@@ -226,18 +395,16 @@ void GameState::updateButtons()
 	if (this->eventSelectButton3->isPressed())
 	{
 		answer = 3;
-		Happiness--;
+		
 		eventCheck = false;
 	}
 
 	if (this->eventSelectButton4->isPressed())
 	{
 		answer = 4;
-		Health--;
+		
 		eventCheck = false;
 	}
-
-
 }
 
 void GameState::updateInputs(const float& dt)
@@ -266,16 +433,10 @@ void GameState::updateText()
 	this->dataV = new Button(850, 600, &this->font, 25, "Moral : ", Moral, sf::Color::White);
 
 	delete this->eventTextButton;
-	this->eventTextButton = new Button(900, 0, 150, 50, &this->font, eventText, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	this->eventTextButton = new Button(620, 60, 400, 200, &this->ThaiFont, eventText, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 }
 
-
-
-
-
-
-//update
 void GameState::update(const float& dt)
 {
 	this->updateMousePos();
