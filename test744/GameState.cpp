@@ -353,7 +353,7 @@ void GameState::creatEvent(int Evnow)
 			delete this->eventSelectButton2;
 			this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton3;
-			this->eventSelectButton3 = new Button(820, 330, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton3 = new Button(570, 330, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 
 			buttonCount = 3;
@@ -381,7 +381,7 @@ void GameState::creatEvent(int Evnow)
 			delete this->eventSelectButton2;
 			this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton3;
-			this->eventSelectButton3 = new Button(820, 330, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton3 = new Button(570, 330, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 
 			buttonCount = 3;
@@ -414,7 +414,7 @@ void GameState::creatEvent(int Evnow)
 			delete this->eventSelectButton2;
 			this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton3;
-			this->eventSelectButton3 = new Button(820, 330, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton3 = new Button(570, 330, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 
 			buttonCount = 3;
