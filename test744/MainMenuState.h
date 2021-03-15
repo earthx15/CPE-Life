@@ -16,7 +16,7 @@ private:
     Button* exit_btn;
 
 public:
-   
+
 
     MainMenuState(sf::RenderWindow* window, std::stack<State*>* states);
     virtual ~MainMenuState();

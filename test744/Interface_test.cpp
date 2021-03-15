@@ -44,28 +44,28 @@ void MainMenu::cursor_selected(sf::RenderWindow& window)
 {
 	if (mainMenu[0].getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
 	{
-		
+
 		mainMenuSelected = 0;
 		mainMenu[mainMenuSelected].setFillColor(::sf::Color::Red);
-		
+
 	}
 	else if (mainMenu[1].getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
 	{
-		
+
 		mainMenuSelected = 1;
 		mainMenu[mainMenuSelected].setFillColor(::sf::Color::Red);
-		
+
 	}
 	else if (mainMenu[2].getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y))
 	{
-		
+
 		mainMenuSelected = 2;
 		mainMenu[mainMenuSelected].setFillColor(::sf::Color::Red);
 	}
 	else if (~(mainMenu[0].getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) || ~(mainMenu[1].getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)) || ~(mainMenu[2].getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y)))
 	{
-		
+
 		mainMenuSelected = -1;
 	}
-	
+
 }

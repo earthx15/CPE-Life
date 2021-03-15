@@ -21,7 +21,7 @@ class State
 private:
 
 protected:
-	
+
 	sf::RenderWindow* window;
 	std::vector<sf::Texture> textures;
 	bool quit;
@@ -41,7 +41,7 @@ public:
 
 	const bool& getQuit() const;
 
-	virtual void checkForQuit(); 
+	virtual void checkForQuit();
 
 	virtual void initFont();
 	virtual void endState() = 0;

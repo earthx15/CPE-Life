@@ -30,7 +30,7 @@ void State::initFont()
 	{
 		throw("Error : Could not load Font\n");
 	}
-	
+
 	if (!this->ThaiFont.loadFromFile("font/upcjl.ttf"))
 	{
 		throw("Error : Could not load ThaiFont\n");
@@ -44,5 +44,3 @@ void State::updateMousePos()
 	this->mousePosWindow = sf::Mouse::getPosition(*this->window);
 	this->mousePosView = this->window->mapPixelToCoords(sf::Mouse::getPosition(*this->window));
 }
-
-
