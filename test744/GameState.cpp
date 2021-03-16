@@ -38,7 +38,7 @@ GameState::GameState(sf::RenderWindow* window, std::stack<State*>* states)
 	this->BackgroundName.setPosition(0, 0);
 
 	this->BackgroundStatus.setSize(sf::Vector2f(1080, 180));
-	this->BackgroundStatus.setFillColor(sf::Color::Yellow);
+	this->BackgroundStatus.setFillColor(sf::Color::Black);
 	this->BackgroundStatus.setPosition(0, 540);
 
 	this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
@@ -86,6 +86,14 @@ void GameState::endState()
 //event
 int GameState::eventRandom()
 {
+	
+	if (age == 5)
+	{
+		Evnow = -1;
+		return Evnow;
+	}
+
+	
 	randtype = random(101);
 	if (randtype >= 20 && randtype <= 100) {
 		if (age >= 0 && age <= 5)
@@ -118,21 +126,31 @@ int GameState::eventRandom()
 void GameState::creatEvent(int Evnow)
 {
 
+	if (Evnow == -1) 
+	{
+		eventText = "You are dead. xd"; \
+
+		eventSelectText1 = "Back to main menu.";
+
+		delete this->eventSelectButton1;
+		this->eventSelectButton1 = new Button(695, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+		buttonCount = 1;
+		eventCheck = 1;
+
+		return;
+	}
+
 	//baby event
 	if (age >= 0 && age <= 5)
 	{
 		switch (Evnow)
 		{
 			//baby
-		case -1:
-
-
-			break;
-
 		case 0:
 
-			eventSelectText1 = "Tell dad the truth ";
-			eventSelectText2 = "nope";
+			eventSelectText1 = "Tell dad the truth. ";
+			eventSelectText2 = "Nope";
 
 			eventText = "Ouch! I have a toothache so badly. \nI shouldn't have eaten those candies \nUncle Tom give us.";
 
@@ -274,7 +292,7 @@ void GameState::creatEvent(int Evnow)
 			delete this->eventSelectButton2;
 			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton3;
-			this->eventSelectButton3 = new Button(820, 340, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton3 = new Button(820, 340, 225, 50, &this->font, eventSelectText3, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 
 			buttonCount = 3;
@@ -543,6 +561,15 @@ void GameState::updateAge()
 
 void GameState::updateAnswer()
 {
+	
+	if (Evnow == -1) 
+	{
+		if (answer == 1)
+		{
+			this->quit = true;
+		}
+	}
+
 	if (age >= 0 && age <= 5)
 	{
 		switch (Evnow)
