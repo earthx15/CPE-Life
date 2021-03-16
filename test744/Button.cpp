@@ -5,10 +5,10 @@ Button::Button(float x, float y, float width, float height,
 	sf::Font* font, std::string text, int textSize,
 	sf::Color idleColor, sf::Color hoverColor, sf::Color activeColor, sf::Color textColor)
 {
-
-
+	
+	
 	this->buttonState = BTN_IDLE;
-
+	
 	this->buttonShape.setPosition(sf::Vector2f(x, y));
 	this->buttonShape.setSize(sf::Vector2f(width, height));
 
@@ -19,7 +19,7 @@ Button::Button(float x, float y, float width, float height,
 	this->buttonText.setCharacterSize(textSize);
 	this->buttonText.setPosition(
 		this->buttonShape.getPosition().x + (this->buttonShape.getGlobalBounds().width / 2.f) - this->buttonText.getGlobalBounds().width / 2.f,
-		this->buttonShape.getPosition().y + (this->buttonShape.getGlobalBounds().height / 3.f) - this->buttonText.getGlobalBounds().height / 2.f
+		this->buttonShape.getPosition().y + (this->buttonShape.getGlobalBounds().height / 3.f) - this->buttonText.getGlobalBounds().height / 3.f
 	);
 
 	this->idleColor = idleColor;
@@ -36,14 +36,14 @@ Button::Button(float x, float y, sf::Font* font, int textSize, std::string text,
 
 	this->buttonState = BTN_IDLE;
 	this->buttonText.setPosition(sf::Vector2f(x, y));
-
+	
 
 	this->font = font;
 	this->buttonText.setFont(*this->font);
 	this->buttonText.setString(text + std::to_string(data));
 	this->buttonText.setFillColor(textColor);
 	this->buttonText.setCharacterSize(textSize);
-
+	
 
 }
 
@@ -58,14 +58,14 @@ const bool Button::isPressed() const
 {
 	if (buttonState == BTN_ACTIVE)
 		return true;
-
+	
 	return false;
 }
 
 //updateButton
 void Button::update(const sf::Vector2f mousePos)
 {
-
+	
 	//IDLE
 	this->buttonState = BTN_IDLE;
 
@@ -77,8 +77,8 @@ void Button::update(const sf::Vector2f mousePos)
 		//ACTIVE
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 		{
-			if (mode == 0)
-				this->buttonState = BTN_ACTIVE;
+			if(mode == 0)
+			this->buttonState = BTN_ACTIVE;
 			mode = 1;
 		}
 
@@ -94,11 +94,11 @@ void Button::update(const sf::Vector2f mousePos)
 	case BTN_IDLE:
 		this->buttonShape.setFillColor(this->idleColor);
 		break;
-
+	
 	case BTN_HOVER:
 		this->buttonShape.setFillColor(this->hoverColor);
 		break;
-
+	
 	case BTN_ACTIVE:
 		this->buttonShape.setFillColor(this->activeColor);
 		break;
@@ -124,3 +124,6 @@ void Button::renderText(sf::RenderTarget* target)
 {
 	target->draw(this->buttonText);
 }
+
+
+

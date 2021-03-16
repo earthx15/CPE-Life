@@ -1,4 +1,4 @@
-﻿#include "GameState.h"
+#include "GameState.h"
 
 GameState::GameState(sf::RenderWindow* window, std::stack<State*>* states)
 	:State(window, states)
@@ -6,12 +6,13 @@ GameState::GameState(sf::RenderWindow* window, std::stack<State*>* states)
 
 	srand(time(0));
 	eventCheck = false;
+	selectSize = 20;
 
 	this->initFont();
 
 	//(x, y, width, height, font, "text", text size , idle color, hover color, active color, text color)
-	this->backToState_btn = new Button(600, 500, 150, 50, &this->font, "Back", 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-	this->aged_btn = new Button(415, 380, 250, 100, &this->font, "aged!", 60, sf::Color(70, 70, 70, 250), sf::Color(150, 150, 150, 250), sf::Color(20, 20, 20, 250), sf::Color::White);
+	this->backToState_btn = new Button(10, 660, 150, 50, &this->font, "Back", 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	this->aged_btn = new Button(415, 420, 250, 100, &this->font, "aged!", 60, sf::Color(70, 70, 70, 250), sf::Color(150, 150, 150, 250), sf::Color(20, 20, 20, 250), sf::Color::White);
 
 	//(x, y, font, text size, "text", data, text color)
 	this->ageShow = new Button(100, 100, &this->font, 25, "age : ", age, sf::Color::White);
@@ -40,12 +41,12 @@ GameState::GameState(sf::RenderWindow* window, std::stack<State*>* states)
 	this->BackgroundStatus.setFillColor(sf::Color::Yellow);
 	this->BackgroundStatus.setPosition(0, 540);
 
-	this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-	this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-	this->eventSelectButton3 = new Button(570, 370, 250, 50, &this->font, eventSelectText3, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-	this->eventSelectButton4 = new Button(820, 370, 250, 50, &this->font, eventSelectText4, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	this->eventSelectButton3 = new Button(570, 340, 225, 50, &this->font, eventSelectText3, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	this->eventSelectButton4 = new Button(820, 340, 225, 50, &this->font, eventSelectText4, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
-	this->eventTextButton = new Button(620, 60, 400, 200, &this->font, eventText, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	this->eventTextButton = new Button(610, 60, 400, 200, &this->font2, eventText, 35, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 
 
@@ -103,7 +104,7 @@ int GameState::eventRandom()
 			Evnow = random(elderlyEvent);
 	}
 	else if (randtype == 0 && age == 0) {
-		Evnow - 1;
+		Evnow = -1;
 
 		std::cout << "you death" << std::endl;
 	}
@@ -130,15 +131,15 @@ void GameState::creatEvent(int Evnow)
 
 		case 0:
 
-			eventSelectText1 = "Go to see the doctor with dad.";
+			eventSelectText1 = "Tell dad the truth ";
 			eventSelectText2 = "nope";
 
-			eventText = "Ouch! I have tooth decay. \nI shouldn't have eaten candies that much.";
+			eventText = "Ouch! I have a toothache so badly. \nI shouldn't have eaten those candies \nUncle Tom give us.";
 
 			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
-			this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 
 			buttonCount = 2;
@@ -154,9 +155,9 @@ void GameState::creatEvent(int Evnow)
 			eventText = "Go to hospital to inject a vaccine";
 
 			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
-			this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 
 
@@ -172,9 +173,9 @@ void GameState::creatEvent(int Evnow)
 			eventText = "you injured from toys. \nDad wants to take you to the doctor.";
 
 			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
-			this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 
 
@@ -185,11 +186,11 @@ void GameState::creatEvent(int Evnow)
 		case 3:
 			eventSelectText1 = "ok";
 
-			eventText = "congratulation you have a yong brather.";
+			eventText = "congratulation you have a young brother.";
 
 			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-			
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
 
 
 			buttonCount = 1;
@@ -229,13 +230,13 @@ void GameState::creatEvent(int Evnow)
 			eventText = "You are bullied.";
 
 			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
-			this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton3;
-			this->eventSelectButton3 = new Button(570, 330, 250, 50, &this->font, eventSelectText3, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton3 = new Button(570, 340, 225, 50, &this->font, eventSelectText3, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton4;
-			this->eventSelectButton4 = new Button(820, 330, 250, 50, &this->font, eventSelectText4, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton4 = new Button(820, 340, 225, 50, &this->font, eventSelectText4, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 
 			buttonCount = 4;
@@ -250,9 +251,9 @@ void GameState::creatEvent(int Evnow)
 			eventText = "Some one confess about lovenses to you.";
 
 			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
-			this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 
 
@@ -269,11 +270,11 @@ void GameState::creatEvent(int Evnow)
 			eventText = "Your friends persuade you to skipping class.";
 
 			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
-			this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton3;
-			this->eventSelectButton3 = new Button(820, 330, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton3 = new Button(820, 340, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 
 			buttonCount = 3;
@@ -283,13 +284,13 @@ void GameState::creatEvent(int Evnow)
 			break;
 		case 3:
 			eventSelectText1 = "ok.";
-			
+
 
 			eventText = "you find true friend.";
 
 			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-		
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
 
 
 			buttonCount = 1;
@@ -304,9 +305,9 @@ void GameState::creatEvent(int Evnow)
 			eventText = "You find dad's old camera.";
 
 			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
-			this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 
 
@@ -330,9 +331,9 @@ void GameState::creatEvent(int Evnow)
 			eventText = "A friend invited me to smoke.";
 
 			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
-			this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 
 
@@ -349,11 +350,11 @@ void GameState::creatEvent(int Evnow)
 			eventText = "Your friends persuade you to skipping class.";
 
 			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
-			this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton3;
-			this->eventSelectButton3 = new Button(570, 330, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton3 = new Button(570, 340, 225, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 
 			buttonCount = 3;
@@ -377,11 +378,11 @@ void GameState::creatEvent(int Evnow)
 			eventText = "A friend asked to copy the exam.";
 
 			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
-			this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton3;
-			this->eventSelectButton3 = new Button(570, 330, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton3 = new Button(570, 340, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 
 			buttonCount = 3;
@@ -395,7 +396,7 @@ void GameState::creatEvent(int Evnow)
 			eventText = "Parents bought a car for.";
 
 			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 			buttonCount = 1;
 			eventCheck = 1;
@@ -410,11 +411,11 @@ void GameState::creatEvent(int Evnow)
 			eventText = "Enter the activity.";
 
 			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
-			this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton3;
-			this->eventSelectButton3 = new Button(570, 330, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton3 = new Button(570, 340, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 
 			buttonCount = 3;
@@ -433,14 +434,14 @@ void GameState::creatEvent(int Evnow)
 		case 0:
 			eventSelectText1 = "Go.";
 			eventSelectText2 = "No.";
-			
+
 
 			eventText = "The party.";
 
 			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
-			this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 			buttonCount = 2;
 			eventCheck = 1;
@@ -455,9 +456,9 @@ void GameState::creatEvent(int Evnow)
 			eventText = "Being cursed by the boss.";
 
 			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
-			this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 			buttonCount = 2;
 			eventCheck = 1;
@@ -472,9 +473,9 @@ void GameState::creatEvent(int Evnow)
 			eventText = "A friend who works to defraud company money.";
 
 			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
-			this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 			buttonCount = 2;
 			eventCheck = 1;
@@ -497,9 +498,9 @@ void GameState::creatEvent(int Evnow)
 			eventText = "Being cursed by the boss.";
 
 			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
-			this->eventSelectButton2 = new Button(820, 280, 250, 50, &this->font, eventSelectText2, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 			buttonCount = 2;
 			eventCheck = 1;
@@ -508,12 +509,12 @@ void GameState::creatEvent(int Evnow)
 			break;
 		case 1:
 			eventSelectText1 = "Ok.";
-			
+
 			eventText = "You Promote.";
 
 			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(570, 280, 250, 50, &this->font, eventSelectText1, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-		
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
 			buttonCount = 1;
 			eventCheck = 1;
 
@@ -551,7 +552,7 @@ void GameState::updateAnswer()
 			switch (answer)
 			{
 			case 1:
-				Happiness+=random(6)+5;
+				Happiness += random(6) + 5;
 				answer = 0;
 				break;
 			case 2:
@@ -562,7 +563,7 @@ void GameState::updateAnswer()
 			switch (answer)
 			{
 			case 1:
-				Health+=random(6)+10;
+				Health += random(6) + 10;
 				answer = 0;
 				break;
 			case 2:
@@ -605,9 +606,9 @@ void GameState::updateAnswer()
 			switch (answer)
 			{
 			case 1:
-				if (Moral >=50)
+				if (Moral >= 50)
 				{
-					if (random(3)>0)
+					if (random(3) > 0)
 					{
 						Health += 10;
 					}
@@ -658,12 +659,12 @@ void GameState::updateAnswer()
 				answer = 0;
 				break;
 			case 2:
-				Look += 5; 
+				Look += 5;
 				Smart += 15;
 				answer = 0;
 				break;
 			case 3:
-				if (random(101)<=40)
+				if (random(101) <= 40)
 				{
 					Happiness -= 15;
 				}
@@ -982,7 +983,7 @@ void GameState::updateText()
 	this->dataV = new Button(850, 600, &this->font, 25, "Moral : ", Moral, sf::Color::White);
 
 	delete this->eventTextButton;
-	this->eventTextButton = new Button(620, 60, 400, 200, &this->font, eventText, 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	this->eventTextButton = new Button(610, 60, 400, 200, &this->font2, eventText, 35, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 }
 

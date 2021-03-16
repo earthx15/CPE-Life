@@ -72,6 +72,8 @@ private:
     int Evnow;
     int randtype;
 
+    int selectSize;
+
 
     std::string eventText;
     std::string eventSelectText1;
