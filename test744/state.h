@@ -21,13 +21,13 @@ class State
 private:
 
 protected:
-
+	
 	sf::RenderWindow* window;
 	std::vector<sf::Texture> textures;
 	bool quit;
 
 	sf::Font font;
-	sf::Font ThaiFont;
+	sf::Font font2;
 	sf::Vector2i mousePosScreen;
 	sf::Vector2i mousePosWindow;
 	sf::Vector2f mousePosView;
@@ -41,7 +41,7 @@ public:
 
 	const bool& getQuit() const;
 
-	virtual void checkForQuit();
+	virtual void checkForQuit(); 
 
 	virtual void initFont();
 	virtual void endState() = 0;
