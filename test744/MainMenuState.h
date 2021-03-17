@@ -15,9 +15,12 @@ private:
     Button* acheivment_btn;
     Button* exit_btn;
 
-public:
+    sf::Texture backgroundTexture;
+
    
 
+public:
+   
     MainMenuState(sf::RenderWindow* window, std::stack<State*>* states);
     virtual ~MainMenuState();
 
