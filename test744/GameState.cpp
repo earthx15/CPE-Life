@@ -86,9 +86,9 @@ void GameState::endState()
 //event
 int GameState::eventRandom()
 {
-	
 
-	
+
+
 	randtype = random(101);
 	if (randtype >= 20 && randtype <= 100) {
 		if (age >= 0 && age <= 5)
@@ -121,11 +121,11 @@ int GameState::eventRandom()
 void GameState::creatEvent(int Evnow)
 {
 
-	if (Evnow == -1) 
+	if (Evnow == -1)
 	{
 		eventText = "You are dead. xd"; \
 
-		eventSelectText1 = "Back to main menu.";
+			eventSelectText1 = "Back to main menu.";
 
 		delete this->eventSelectButton1;
 		this->eventSelectButton1 = new Button(695, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
@@ -211,7 +211,7 @@ void GameState::creatEvent(int Evnow)
 			std::cout << "case 3\n";
 			break;
 		case 4:
-            
+
 			eventSelectText1 = "Go to see the doctor.";
 			eventSelectText2 = "Nothing.";
 
@@ -221,7 +221,7 @@ void GameState::creatEvent(int Evnow)
 			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
 			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-	
+
 
 			buttonCount = 2;
 			eventCheck = 1;
@@ -231,7 +231,7 @@ void GameState::creatEvent(int Evnow)
 
 
 		case 5:
-            eventSelectText1 = "Go.";
+			eventSelectText1 = "Go.";
 			eventSelectText2 = "don't go.";
 
 			eventText = "Your parent take you to travel with them.";
@@ -240,7 +240,7 @@ void GameState::creatEvent(int Evnow)
 			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
 			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-	
+
 
 			buttonCount = 2;
 			eventCheck = 1;
@@ -248,7 +248,7 @@ void GameState::creatEvent(int Evnow)
 			std::cout << "case 5\n";
 			break;
 		case 6:
-            eventSelectText1 = "Admit that I broke it.";
+			eventSelectText1 = "Admit that I broke it.";
 			eventSelectText2 = "It wasn't me.";
 
 			eventText = "You broke your father dish while you were playing.";
@@ -257,15 +257,15 @@ void GameState::creatEvent(int Evnow)
 			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
 			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-	
+
 
 			buttonCount = 2;
 			eventCheck = 1;
 
 			std::cout << "case 6\n";
 			break;
-        case 7:
-            eventSelectText1 = "Play.";
+		case 7:
+			eventSelectText1 = "Play.";
 			eventSelectText2 = "Don't play.";
 
 			eventText = "You father persuade you to play football";
@@ -274,15 +274,15 @@ void GameState::creatEvent(int Evnow)
 			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
 			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-	
+
 
 			buttonCount = 2;
 			eventCheck = 1;
 
 			std::cout << "case 7\n";
 			break;
-        case 8:
-            eventSelectText1 = "Choose father.";
+		case 8:
+			eventSelectText1 = "Choose father.";
 			eventSelectText2 = "Choose mother.";
 
 			eventText = "Your parent broke up";
@@ -291,15 +291,15 @@ void GameState::creatEvent(int Evnow)
 			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
 			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-	
+
 
 			buttonCount = 2;
 			eventCheck = 1;
 
 			std::cout << "case 8\n";
 			break;
-        case 9:
-            eventSelectText1 = "Yes.";
+		case 9:
+			eventSelectText1 = "Yes.";
 			eventSelectText2 = "No.";
 
 			eventText = "Share toys with friends.";
@@ -308,15 +308,15 @@ void GameState::creatEvent(int Evnow)
 			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
 			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-	
+
 
 			buttonCount = 2;
 			eventCheck = 1;
 
 			std::cout << "case 9\n";
 			break;
-        case 10:
-            eventSelectText1 = "Accept.";
+		case 10:
+			eventSelectText1 = "Accept.";
 			eventSelectText2 = "Not accept";
 
 			eventText = "Parents gave you a gift.";
@@ -325,7 +325,7 @@ void GameState::creatEvent(int Evnow)
 			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
 			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-	
+
 
 			buttonCount = 2;
 			eventCheck = 1;
@@ -333,7 +333,7 @@ void GameState::creatEvent(int Evnow)
 			std::cout << "case 10\n";
 			break;
 		case 11:
-		    
+
 			eventSelectText1 = "Punch.";
 			eventSelectText2 = "Kick.";
 			eventSelectText3 = "Headbutt.";
@@ -366,7 +366,7 @@ void GameState::creatEvent(int Evnow)
 			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
 			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-	
+
 
 			buttonCount = 2;
 			eventCheck = 1;
@@ -447,8 +447,8 @@ void GameState::creatEvent(int Evnow)
 			break;
 		case 3:
 			eventSelectText1 = "Help.";
-            eventSelectText2 = "Follow the teacher.";
-            eventSelectText3 = "Don't care.";
+			eventSelectText2 = "Follow the teacher.";
+			eventSelectText3 = "Don't care.";
 
 
 			eventText = "you find true friend.";
@@ -481,7 +481,7 @@ void GameState::creatEvent(int Evnow)
 
 			std::cout << "case 4\n";
 			break;
-        case 5:
+		case 5:
 			eventSelectText1 = "Go to see the doctor.";
 			eventSelectText2 = "Notthing.";
 
@@ -499,7 +499,7 @@ void GameState::creatEvent(int Evnow)
 
 			std::cout << "case 5\n";
 			break;
-        case 6:
+		case 6:
 			eventSelectText1 = "Yes.";
 			eventSelectText2 = "No.";
 
@@ -517,7 +517,7 @@ void GameState::creatEvent(int Evnow)
 
 			std::cout << "case 6\n";
 			break;
-        case 7:
+		case 7:
 			eventSelectText1 = "Yes.";
 			eventSelectText2 = "No.";
 
@@ -535,7 +535,7 @@ void GameState::creatEvent(int Evnow)
 
 			std::cout << "case 7\n";
 			break;
-        case 8:
+		case 8:
 			eventSelectText1 = "Yes.";
 			eventSelectText2 = "No.";
 
@@ -553,7 +553,7 @@ void GameState::creatEvent(int Evnow)
 
 			std::cout << "case 8\n";
 			break;
-        case 9:
+		case 9:
 			eventSelectText1 = "Happy.";
 			eventSelectText2 = "Notthing.";
 
@@ -571,8 +571,8 @@ void GameState::creatEvent(int Evnow)
 
 			std::cout << "case 9\n";
 			break;
-        case 10:
-			eventSelectText1 = "à¹Yes.";
+		case 10:
+			eventSelectText1 = "íYes.";
 			eventSelectText2 = "Notthing.";
 
 			eventText = "House cleaning.";
@@ -589,8 +589,8 @@ void GameState::creatEvent(int Evnow)
 
 			std::cout << "case 10\n";
 			break;
-		case 11:	
-		    eventSelectText1 = "Punch.";
+		case 11:
+			eventSelectText1 = "Punch.";
 			eventSelectText2 = "Kick.";
 			eventSelectText3 = "Headbutt.";
 			eventSelectText4 = "Guard.";
@@ -612,8 +612,8 @@ void GameState::creatEvent(int Evnow)
 
 			std::cout << "case 11\n";
 			break;
-		case 12:	
-		    eventSelectText1 = "à¹Watch.";
+		case 12:
+			eventSelectText1 = "íWatch.";
 			eventSelectText2 = "Don't watch .";
 
 			eventText = "Your friend persuade you to watch pornhub.";
@@ -630,8 +630,8 @@ void GameState::creatEvent(int Evnow)
 
 			std::cout << "case 12\n";
 			break;
-		case 13:	
-		    eventSelectText1 = "à¹Yes.";
+		case 13:
+			eventSelectText1 = "íYes.";
 			eventSelectText2 = "No.";
 
 			eventText = "Songkarn Festival.";
@@ -648,8 +648,8 @@ void GameState::creatEvent(int Evnow)
 
 			std::cout << "case 13\n";
 			break;
-		case 14:	
-		    eventSelectText1 = "Yes.";
+		case 14:
+			eventSelectText1 = "Yes.";
 			eventSelectText2 = "No.";
 
 			eventText = "still money your mother.";
@@ -893,8 +893,8 @@ void GameState::updateAge()
 
 void GameState::updateAnswer()
 {
-	
-	if (Evnow == -1) 
+
+	if (Evnow == -1)
 	{
 		if (answer == 1)
 		{
@@ -912,10 +912,10 @@ void GameState::updateAnswer()
 			{
 			case 1:
 				Happiness += random(6) + 5;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			case 2:
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			}
 		case 1:
@@ -923,10 +923,10 @@ void GameState::updateAnswer()
 			{
 			case 1:
 				Health += random(6) + 10;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			case 2:
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			}
 			break;
@@ -935,11 +935,11 @@ void GameState::updateAnswer()
 			{
 			case 1:
 				Health += 10;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			case 2:
 				Health -= 10;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			}
 			break;
@@ -948,152 +948,152 @@ void GameState::updateAnswer()
 			{
 			case 1:
 				Happiness += 20;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			}
 			break;
 		case 4:
-        switch(answer)
-           {
-        case 1:
-            Health -= 2;
-            answer = 0;
-            break;
-        case 2:
-             Health -= 10;
-             answer = 0;
-             break;    
-           }
-			break;
-        case 5:
-        switch(answer)
-           {
-        case 1:
-             Happiness += 10;
-             answer = 0;
-             break;
-        case 2:
-             Happiness -= 8;
-             answer = 0;
-             break;            
-           }
-           break;
-        case 6:
-        switch(answer)
-           {
-        case 1:
-             Happiness +=2;
-			 Moral +=5;
-             answer =0;
-             break;
-        case 2:
-             Happiness -=8;
-			 Moral -=5;
-             answer =0;
-             break;            
-           } 
-           break; 
-        case 7:
-        switch(answer)
-            {
-        case 1:
-             Happiness +=5;
-             Health +=5;
-             answer =0;
-             break;
-        case 2:
-              Happiness -=3;
-              answer =0;
-              break;             
-            }    
-            break;
-        case 8:
-        switch(answer)
-           {
-            case 1:
-                Happiness -= 30;
-                answer =0;
-                break;
-            case 2:
-                Happiness -= 30;
-                answer =0;
-                break;
-           }
-           break;
-           case 9:
-        switch(answer)
-           {
-            case 1:
-                Happiness += 5;
-				Moral += 3;
-                answer =0;
-                break;
-            case 2:
-                Happiness -= 5;
-				Moral -=2;
-                answer =0;
-                break;
-           }
-           break;
-           case 10:
-        switch(answer)
-           {
-            case 1:
-                Happiness += 7;
-                answer =0;
-                break;
-            case 2:
-                Happiness -= 7;
-                answer =0;
-                break;
-           }
-           break;
-		   case 11:
-		switch(answer)
-		   {
+			switch (answer)
+			{
 			case 1:
-			   Happiness -=3;
-			   Health -=4;
-			   Moral -=5;
-			   Look -=2;
-			   answer =0;
-			   break;
+				Health -= 2;
+				answer = 0; eventCheck = false;
+				break;
 			case 2:
-			   Happiness -=3;
-			   Health -=4;
-			   Moral -=5;
-			   Look -=2;
-			   answer =0;
-			   break;
+				Health -= 10;
+				answer = 0; eventCheck = false;
+				break;
+			}
+			break;
+		case 5:
+			switch (answer)
+			{
+			case 1:
+				Happiness += 10;
+				answer = 0; eventCheck = false;
+				break;
+			case 2:
+				Happiness -= 8;
+				answer = 0; eventCheck = false;
+				break;
+			}
+			break;
+		case 6:
+			switch (answer)
+			{
+			case 1:
+				Happiness += 2;
+				Moral += 5;
+				answer = 0; eventCheck = false;
+				break;
+			case 2:
+				Happiness -= 8;
+				Moral -= 5;
+				answer = 0; eventCheck = false;
+				break;
+			}
+			break;
+		case 7:
+			switch (answer)
+			{
+			case 1:
+				Happiness += 5;
+				Health += 5;
+				answer = 0; eventCheck = false;
+				break;
+			case 2:
+				Happiness -= 3;
+				answer = 0; eventCheck = false;
+				break;
+			}
+			break;
+		case 8:
+			switch (answer)
+			{
+			case 1:
+				Happiness -= 30;
+				answer = 0; eventCheck = false;
+				break;
+			case 2:
+				Happiness -= 30;
+				answer = 0; eventCheck = false;
+				break;
+			}
+			break;
+		case 9:
+			switch (answer)
+			{
+			case 1:
+				Happiness += 5;
+				Moral += 3;
+				answer = 0; eventCheck = false;
+				break;
+			case 2:
+				Happiness -= 5;
+				Moral -= 2;
+				answer = 0; eventCheck = false;
+				break;
+			}
+			break;
+		case 10:
+			switch (answer)
+			{
+			case 1:
+				Happiness += 7;
+				answer = 0; eventCheck = false;
+				break;
+			case 2:
+				Happiness -= 7;
+				answer = 0; eventCheck = false;
+				break;
+			}
+			break;
+		case 11:
+			switch (answer)
+			{
+			case 1:
+				Happiness -= 3;
+				Health -= 4;
+				Moral -= 5;
+				Look -= 2;
+				answer = 0; eventCheck = false;
+				break;
+			case 2:
+				Happiness -= 3;
+				Health -= 4;
+				Moral -= 5;
+				Look -= 2;
+				answer = 0; eventCheck = false;
+				break;
 			case 3:
-			   Happiness -=3;
-			   Health -=4;
-			   Moral -=5;
-			   Look -=2;
-			   answer =0;
-			   break;   
+				Happiness -= 3;
+				Health -= 4;
+				Moral -= 5;
+				Look -= 2;
+				answer = 0; eventCheck = false;
+				break;
 			case 4:
-			   Happiness -=3;
-			   Health -=4;
-			   Moral -=5;
-			   Look -=2;
-			   answer =0;
-			   break;   
-		   } 
-		   break;
-		  case 12:
-		  switch(answer)
-		    {
-				case 1:
-				  Happiness +=2;
-				  Moral +=5;
-				  Look +=2;
-				  answer =0;
-				  break;
-				case 2:
-				   Moral -=4;
-				   answer =0;
-				   break; 
+				Happiness -= 3;
+				Health -= 4;
+				Moral -= 5;
+				Look -= 2;
+				answer = 0; eventCheck = false;
+				break;
+			}
+			break;
+		case 12:
+			switch (answer)
+			{
+			case 1:
+				Happiness += 2;
+				Moral += 5;
+				Look += 2;
+				answer = 0; eventCheck = false;
+				break;
+			case 2:
+				Moral -= 4;
+				answer = 0; eventCheck = false;
+				break;
 			}
 			break;
 		}
@@ -1122,19 +1122,19 @@ void GameState::updateAnswer()
 				{
 					Health -= 10; Look -= 10;
 				}
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			case 2:
 				Health -= 20; Look -= 20;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			case 3:
 				Happiness += 10; Moral -= 20;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			case 4:
 				Health -= 5; Look -= 5;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			}
 			break;
@@ -1143,10 +1143,10 @@ void GameState::updateAnswer()
 			{
 			case 1:
 				Happiness += 30;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			case 2:
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			}
 			break;
@@ -1157,12 +1157,12 @@ void GameState::updateAnswer()
 				Happiness += 20;
 				Look -= 20;
 				Smart -= 30;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			case 2:
 				Look += 5;
 				Smart += 15;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			case 3:
 				if (random(101) <= 40)
@@ -1174,7 +1174,7 @@ void GameState::updateAnswer()
 					Look += 5;
 					Smart += 15;
 				}
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			}
 			break;
@@ -1183,15 +1183,15 @@ void GameState::updateAnswer()
 			{
 			case 1:
 				Happiness += 5;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
-            case 2:
+			case 2:
 				Happiness += 10;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
-            case 3:
+			case 3:
 				Happiness -= 10;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			}
 			break;
@@ -1200,419 +1200,420 @@ void GameState::updateAnswer()
 			{
 			case 1:
 				Happiness += 5;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			case 2:
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			}
 			break;
-        case 5:
+		case 5:
 			switch (answer)
 			{
 			case 1:
 				Health += 10;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			case 2:
-                Health -= 10;
-				answer = 0;
+				Health -= 10;
+				answer = 0; eventCheck = false;
 				break;
 			}
 			break;
-        case 6:
+		case 6:
 			switch (answer)
 			{
 			case 1:
 				Health += 5;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			case 2:
-                Health -= 15;
-				answer = 0;
+				Health -= 15;
+				answer = 0; eventCheck = false;
 				break;
 			}
 			break;
-        case 7:
+		case 7:
 			switch (answer)
 			{
 			case 1:
 				Happiness += 8;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			case 2:
-                Happiness -= 3;
-				answer = 0;
+				Happiness -= 3;
+				answer = 0; eventCheck = false;
 				break;
 			}
 			break;
-        case 8:
+		case 8:
 			switch (answer)
 			{
 			case 1:
 				Happiness += 8;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			case 2:
-                Happiness -= 3;
-				answer = 0;
+				Happiness -= 3;
+				answer = 0; eventCheck = false;
 				break;
 			}
 			break;
-        case 9:
+		case 9:
 			switch (answer)
 			{
 			case 1:
 				Happiness += 10;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			case 2:
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			}
 			break;
-        case 10:
+		case 10:
 			switch (answer)
 			{
 			case 1:
 				Happiness += 8;
-                Health += 5;
-				answer = 0;
+				Health += 5;
+				answer = 0; eventCheck = false;
 				break;
 			case 2:
-                Happiness -= 6; 
-				answer = 0;
+				Happiness -= 6;
+				answer = 0; eventCheck = false;
 				break;
 			}
 			break;
-		case 11 :	
-		switch(answer)
-		   {
+		case 11:
+			switch (answer)
+			{
 			case 1:
-			   Happiness -=3;
-			   Health -=4;
-			   Moral -=5;
-			   Look -=2;
-			   answer =0;
-			   break;
+				Happiness -= 3;
+				Health -= 4;
+				Moral -= 5;
+				Look -= 2;
+				answer = 0; eventCheck = false;
+				break;
 			case 2:
-			   Happiness -=3;
-			   Health -=4;
-			   Moral -=5;
-			   Look -=2;
-			   answer =0;
-			   break;
+				Happiness -= 3;
+				Health -= 4;
+				Moral -= 5;
+				Look -= 2;
+				answer = 0; eventCheck = false;
+				break;
 			case 3:
-			   Happiness -=3;
-			   Health -=4;
-			   Moral -=5;
-			   Look -=2;
-			   answer =0;
-			   break;   
+				Happiness -= 3;
+				Health -= 4;
+				Moral -= 5;
+				Look -= 2;
+				answer = 0; eventCheck = false;
+				break;
 			case 4:
-			   Happiness -=3;
-			   Health -=4;
-			   Moral -=5;
-			   Look -=2;
-			   answer =0;
-			   break;   
-		   } 
-		   break;
-        case 12 :
-		switch(answer)
-		  {
-			  case 1:
-			   Happiness += 50;
-			   Moral -= 10;
-			   answer =0;
-			   break;
-			  case 2:
-			    look +=7; 
-				answer =0;
-				break;
-		case 13 :
-		switch(answer)
-		  {
-			  case 1:
-			   Happiness += 15;
-			   answer =0;
-			   break;
-			  case 2:
-			    look -=5; 
-				answer =0;
-				break;
-		case 14 :
-		switch(answer)
-		  {
-			  case 1:
-			   Happiness -= 10;
-			   Moral -= 10;
-			   Look -= 10
-			   answer =0;
-			   break;
-			  case 2:
-			    look +=5;
-				Happiness += 5; 
-				answer =0;
-				break;
-		  }
-		}
-	}
-
-	if (age >= 15 && age <= 18)
-	{
-		switch (Evnow)
-		{
-		case 0:
-			switch (answer)
-			{
-			case 1:
-				Moral -= 20;
-				Happiness += 10;
-				answer = 0;
-				break;
-			case 2:
-				Look += 10;
-				answer = 0;
+				Happiness -= 3;
+				Health -= 4;
+				Moral -= 5;
+				Look -= 2;
+				answer = 0; eventCheck = false;
 				break;
 			}
 			break;
-		case 1:
+		case 12:
 			switch (answer)
 			{
 			case 1:
-				Happiness += 20;
-				Look -= 20;
-				Smart -= 30;
-				answer = 0;
-				break;
-			case 2:
-				Look += 5;
-				Smart += 15;
-				answer = 0;
-				break;
-			case 3:
-				if (random(101) <= 40)
-				{
-					Happiness -= 15;
-				}
-				else
-				{
-					Look += 5;
-					Smart += 15;
-				}
-				answer = 0;
-				break;
-			}
-			break;
-		}
-	}
-
-	if (age >= 19 && age <= 22)
-	{
-		switch (Evnow)
-		{
-		case 0:
-			switch (answer)
-			{
-			case 1:
+				Happiness += 50;
 				Moral -= 10;
-				Happiness += 10;
-				answer = 0;
+				answer = 0; eventCheck = false;
 				break;
 			case 2:
-				answer = 0;
+				Look += 7;
+				answer = 0; eventCheck = false;
 				break;
-			case 3:
-				Look -= 20;
-				answer = 0;
-				break;
+			case 13:
+				switch (answer)
+				{
+				case 1:
+					Happiness += 15;
+					answer = 0; eventCheck = false;
+					break;
+				case 2:
+					Look -= 5;
+					answer = 0; eventCheck = false;
+					break;
+				case 14:
+					switch (answer)
+					{
+					case 1:
+						Happiness -= 10;
+						Moral -= 10;
+						Look -= 10;
+						answer = 0; eventCheck = false;
+						break;
+					case 2:
+						Look += 5;
+						Happiness += 5;
+						answer = 0; eventCheck = false;
+						break;
+					}
+				}
 			}
-			break;
-		case 1:
-			switch (answer)
+
+			if (age >= 15 && age <= 18)
 			{
-			case 1:
-				Happiness += 15;
-				answer = 0;
-				break;
+				switch (Evnow)
+				{
+				case 0:
+					switch (answer)
+					{
+					case 1:
+						Moral -= 20;
+						Happiness += 10;
+						answer = 0; eventCheck = false;
+						break;
+					case 2:
+						Look += 10;
+						answer = 0; eventCheck = false;
+						break;
+					}
+					break;
+				case 1:
+					switch (answer)
+					{
+					case 1:
+						Happiness += 20;
+						Look -= 20;
+						Smart -= 30;
+						answer = 0; eventCheck = false;
+						break;
+					case 2:
+						Look += 5;
+						Smart += 15;
+						answer = 0; eventCheck = false;
+						break;
+					case 3:
+						if (random(101) <= 40)
+						{
+							Happiness -= 15;
+						}
+						else
+						{
+							Look += 5;
+							Smart += 15;
+						}
+						answer = 0; eventCheck = false;
+						break;
+					}
+					break;
+				}
 			}
-			break;
-		case 2:
-			switch (answer)
+
+			if (age >= 19 && age <= 22)
 			{
-			case 1:
-				Look += 10;
-				answer = 0;
-				break;
-			case 2:
-				Happiness += 5;
-				answer = 0;
-				break;
-			case 3:
-				Look -= 20;
-				Happiness += 10;
-				answer = 0;
-				break;
+				switch (Evnow)
+				{
+				case 0:
+					switch (answer)
+					{
+					case 1:
+						Moral -= 10;
+						Happiness += 10;
+						answer = 0; eventCheck = false;
+						break;
+					case 2:
+						answer = 0; eventCheck = false;
+						break;
+					case 3:
+						Look -= 20;
+						answer = 0; eventCheck = false;
+						break;
+					}
+					break;
+				case 1:
+					switch (answer)
+					{
+					case 1:
+						Happiness += 15;
+						answer = 0; eventCheck = false;
+						break;
+					}
+					break;
+				case 2:
+					switch (answer)
+					{
+					case 1:
+						Look += 10;
+						answer = 0; eventCheck = false;
+						break;
+					case 2:
+						Happiness += 5;
+						answer = 0; eventCheck = false;
+						break;
+					case 3:
+						Look -= 20;
+						Happiness += 10;
+						answer = 0; eventCheck = false;
+						break;
+					}
+					break;
+				}
 			}
-			break;
+
+			if (age >= 23 && age <= 40)
+			{
+				switch (Evnow)
+				{
+				case 0:
+					switch (answer)
+					{
+					case 1:
+						Look += 5;
+						answer = 0; eventCheck = false;
+						break;
+					case 2:
+						Look -= 10;
+						answer = 0; eventCheck = false;
+						break;
+					}
+					break;
+				case 1:
+					switch (answer)
+					{
+					case 1:
+						Happiness += 10;
+						Look -= 5;
+						answer = 0; eventCheck = false;
+						break;
+					case 2:
+						Happiness += 10;
+						Look -= 20;
+						answer = 0; eventCheck = false;
+						break;
+					}
+					break;
+				case 2:
+					switch (answer)
+					{
+					case 1:
+						Happiness += 10;
+						Look -= 20;
+						answer = 0; eventCheck = false;
+						break;
+					case 2:
+						Happiness -= 10;
+						Look += 10;
+						Moral += 10;
+						answer = 0; eventCheck = false;
+						break;
+					}
+					break;
+				}
+			}
+
+			if (age >= 41 && age <= 60)
+			{
+				switch (Evnow)
+				{
+				case 0:
+					switch (answer)
+					{
+					case 1:
+						Happiness += 10;
+						Look -= 5;
+						answer = 0; eventCheck = false;
+						break;
+					case 2:
+						Happiness += 10;
+						Look -= 20;
+						answer = 0; eventCheck = false;
+						break;
+					}
+					break;
+				case 1:
+					switch (answer)
+					{
+					case 1:
+						Happiness += 10;
+						Look += 10;
+						answer = 0; eventCheck = false;
+						break;
+					}
+					break;
+				}
+			}
+
+			if (age >= 61)
+			{
+				switch (Evnow)
+				{
+				case 0:
+					break;
+				}
+			}
+
 		}
 	}
-
-	if (age >= 23 && age <= 40)
-	{
-		switch (Evnow)
-		{
-		case 0:
-			switch (answer)
-			{
-			case 1:
-				Look += 5;
-				answer = 0;
-				break;
-			case 2:
-				Look -= 10;
-				answer = 0;
-				break;
-			}
-			break;
-		case 1:
-			switch (answer)
-			{
-			case 1:
-				Happiness += 10;
-				Look -= 5;
-				answer = 0;
-				break;
-			case 2:
-				Happiness += 10;
-				Look -= 20;
-				answer = 0;
-				break;
-			}
-			break;
-		case 2:
-			switch (answer)
-			{
-			case 1:
-				Happiness += 10;
-				Look -= 20;
-				answer = 0;
-				break;
-			case 2:
-				Happiness -= 10;
-				Look += 10;
-				Moral += 10;
-				answer = 0;
-				break;
-			}
-			break;
-		}
-	}
-
-	if (age >= 41 && age <= 60)
-	{
-		switch (Evnow)
-		{
-		case 0:
-			switch (answer)
-			{
-			case 1:
-				Happiness += 10;
-				Look -= 5;
-				answer = 0;
-				break;
-			case 2:
-				Happiness += 10;
-				Look -= 20;
-				answer = 0;
-				break;
-			}
-			break;
-		case 1:
-			switch (answer)
-			{
-			case 1:
-				Happiness += 10;
-				Look += 10;
-				answer = 0;
-				break;
-			}
-			break;
-		}
-	}
-
-	if (age >= 61)
-	{
-		switch (Evnow)
-		{
-		case 0:
-			break;
-		}
-	}
-
 }
 
 void GameState::updateButtons()
 {
-	this->backToState_btn->update(this->mousePosView);
+		this->backToState_btn->update(this->mousePosView);
 
-	this->aged_btn->update(this->mousePosView);
+		this->aged_btn->update(this->mousePosView);
 
-	this->eventSelectButton1->update(this->mousePosView);
-	this->eventSelectButton2->update(this->mousePosView);
-	this->eventSelectButton3->update(this->mousePosView);
-	this->eventSelectButton4->update(this->mousePosView);
+		this->eventSelectButton1->update(this->mousePosView);
+		this->eventSelectButton2->update(this->mousePosView);
+		this->eventSelectButton3->update(this->mousePosView);
+		this->eventSelectButton4->update(this->mousePosView);
 
-	if (this->backToState_btn->isPressed())
-	{
-		this->quit = true;
-	}
-
-	if (this->aged_btn->isPressed())
-	{
-		if (!eventCheck)
+		if (this->backToState_btn->isPressed())
 		{
-			answer = 0;
-			eventCheck = false;
-			age++;
-			this->updateAge();
-
-			this->creatEvent(eventRandom());
+			this->quit = true;
 		}
 
+		if (this->aged_btn->isPressed())
+		{
+			if (!eventCheck)
+			{
+				answer = 0;
+				eventCheck = false;
+				age++;
+				this->updateAge();
 
-	}
+				this->creatEvent(eventRandom());
+			}
 
-	if (this->eventSelectButton1->isPressed())
-	{
 
-		answer = 1;
+		}
 
-		eventCheck = false;
+		if (this->eventSelectButton1->isPressed())
+		{
+			answer = 1;
 
-	}
+			
 
-	if (this->eventSelectButton2->isPressed())
-	{
-		answer = 2;
+		}
 
-		eventCheck = false;
-	}
+		if (this->eventSelectButton2->isPressed())
+		{
+			answer = 2;
 
-	if (this->eventSelectButton3->isPressed())
-	{
-		answer = 3;
+			
+		}
 
-		eventCheck = false;
-	}
+		if (this->eventSelectButton3->isPressed())
+		{
+			answer = 3;
 
-	if (this->eventSelectButton4->isPressed())
-	{
-		answer = 4;
+			
+		}
 
-		eventCheck = false;
-	}
+		if (this->eventSelectButton4->isPressed())
+		{
+			answer = 4;
+
+			
+		}
 }
 
 void GameState::updateInputs(const float& dt)
@@ -1640,82 +1641,82 @@ void GameState::updateText()
 	delete this->dataV;
 	this->dataV = new Button(850, 600, &this->font, 25, "Moral : ", Moral, sf::Color::White);
 
-	delete this->eventTextButton;
-	this->eventTextButton = new Button(610, 60, 400, 200, &this->font2, eventText, 35, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventTextButton;
+			this->eventTextButton = new Button(610, 60, 400, 200, &this->font2, eventText, 35, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
-}
+	}
 
 void GameState::update(const float& dt)
 {
-	this->updateMousePos();
+			this->updateMousePos();
 
-	this->updateInputs(dt);
+			this->updateInputs(dt);
 
-	this->updateButtons();
+			this->updateButtons();
 
-	this->updateText();
+			this->updateText();
 
-	this->updateAnswer();
+			this->updateAnswer();
 
 }
 
-//render
-void GameState::render(sf::RenderTarget* target)
+		//render
+void GameState::render(sf::RenderTarget * target)
 {
-	if (!target)
-		target = this->window;
+			if (!target)
+				target = this->window;
 
-	target->draw(this->Background);
-	target->draw(this->BackgroundLog);
-	target->draw(this->BackgroundName);
-	target->draw(this->BackgroundStatus);
-	target->draw(this->BackgroundSituation);
+			target->draw(this->Background);
+			target->draw(this->BackgroundLog);
+			target->draw(this->BackgroundName);
+			target->draw(this->BackgroundStatus);
+			target->draw(this->BackgroundSituation);
 
-	//render buttons
-	this->aged_btn->renderButton(target);
-	this->backToState_btn->renderButton(target);
+			//render buttons
+			this->aged_btn->renderButton(target);
+			this->backToState_btn->renderButton(target);
 
-	//render text
+			//render text
 
-	this->ageShow->renderText(target);
-	this->dataI->renderText(target);
-	this->dataII->renderText(target);
-	this->dataIII->renderText(target);
-	this->dataIV->renderText(target);
-	this->dataV->renderText(target);
+			this->ageShow->renderText(target);
+			this->dataI->renderText(target);
+			this->dataII->renderText(target);
+			this->dataIII->renderText(target);
+			this->dataIV->renderText(target);
+			this->dataV->renderText(target);
 
 
-	if (eventCheck == true)
+			if (eventCheck == true)
 
-		switch (buttonCount)
-		{
-		case 1:
-			this->eventTextButton->renderButton(target);
+				switch (buttonCount)
+				{
+				case 1:
+					this->eventTextButton->renderButton(target);
 
-			this->eventSelectButton1->renderButton(target);
-			break;
-		case 2:
-			this->eventTextButton->renderButton(target);
-
-			this->eventSelectButton1->renderButton(target);
-			this->eventSelectButton2->renderButton(target);
-			break;
-		case 3:
-			this->eventTextButton->renderButton(target);
+					this->eventSelectButton1->renderButton(target);
+					break;
+				case 2:
+					this->eventTextButton->renderButton(target);
 
 			this->eventSelectButton1->renderButton(target);
 			this->eventSelectButton2->renderButton(target);
-			this->eventSelectButton3->renderButton(target);
-			break;
-		case 4:
-			this->eventTextButton->renderButton(target);
+					break;
+				case 3:
+					this->eventTextButton->renderButton(target);
 
-			this->eventSelectButton1->renderButton(target);
-			this->eventSelectButton2->renderButton(target);
-			this->eventSelectButton3->renderButton(target);
-			this->eventSelectButton4->renderButton(target);
-			break;
-		}
+					this->eventSelectButton1->renderButton(target);
+					this->eventSelectButton2->renderButton(target);
+					this->eventSelectButton3->renderButton(target);
+					break;
+				case 4:
+					this->eventTextButton->renderButton(target);
+
+					this->eventSelectButton1->renderButton(target);
+					this->eventSelectButton2->renderButton(target);
+					this->eventSelectButton3->renderButton(target);
+					this->eventSelectButton4->renderButton(target);
+					break;
+				}
 
 
 }

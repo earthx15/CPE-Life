@@ -39,8 +39,7 @@ private:
 
     Button* eventTextButton;
 
-
-
+   
     //(data)
     int age = 0;
 
@@ -74,18 +73,13 @@ private:
 
     int selectSize;
 
-
     std::string eventText;
     std::string eventSelectText1;
     std::string eventSelectText2;
     std::string eventSelectText3;
     std::string eventSelectText4;
 
-
-
-
-
-
+    
 
 
 public:
@@ -95,13 +89,7 @@ public:
     //Functions
     int random(int n, int x = 0);
 
-
-
     void endState();
-
-
-
-
 
     //Event generating code
     int eventRandom();
@@ -116,6 +104,7 @@ public:
     void updateText();
     void updateAge();
     void updateAnswer();
+    void updateLog();
 
     void update(const float& dt);
 
