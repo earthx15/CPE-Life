@@ -10,17 +10,22 @@ class MainMenuState :
 {
 private:
     sf::RectangleShape Background;
+    sf::RectangleShape HTP;
 
     Button* gamestate_btn;
     Button* acheivment_btn;
     Button* exit_btn;
+    Button* backToState_btn;
 
     sf::Texture backgroundTexture;
+    sf::Texture HTPTexture;
 
-   
+    bool htpCheck;
+
+
 
 public:
-   
+
     MainMenuState(sf::RenderWindow* window, std::stack<State*>* states);
     virtual ~MainMenuState();
 

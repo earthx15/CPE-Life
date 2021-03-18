@@ -7,8 +7,10 @@ MainMenuState::MainMenuState(sf::RenderWindow* window, std::stack<State*>* state
 
 	//(x, y, width, height, font, "text", text size , idle color, hover color, active color, text color)
 	this->gamestate_btn = new Button(465, 350, 150, 50, &this->font, "NEW GAME", 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-	this->acheivment_btn = new Button(465, 450, 150, 50, &this->font, "ACHEIVMENT", 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	this->acheivment_btn = new Button(465, 450, 150, 50, &this->font, "How to play", 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 	this->exit_btn = new Button(465, 550, 150, 50, &this->font, "EXIT", 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+	this->backToState_btn = new Button(10, 660, 150, 50, &this->font, "Back", 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 
 	backgroundTexture.loadFromFile("bgMainmanu.jpg");
 
@@ -16,9 +18,17 @@ MainMenuState::MainMenuState(sf::RenderWindow* window, std::stack<State*>* state
 
 	this->Background.setTexture(&backgroundTexture);
 
+	HTPTexture.loadFromFile("How To Play.png");
+
+	this->HTP.setSize(sf::Vector2f(800, 700));
+
+	this->HTP.setTexture(&HTPTexture);
+
+	this->HTP.setPosition(140, 10);
+
 	std::cout << "\nStarting MainMenuState!\n";
 
-
+	htpCheck = false;
 }
 
 MainMenuState::~MainMenuState()
@@ -36,9 +46,16 @@ void MainMenuState::endState()
 
 void MainMenuState::updateButtons()
 {
-	this->gamestate_btn->update(this->mousePosView);
-	this->acheivment_btn->update(this->mousePosView);
-	this->exit_btn->update(this->mousePosView);
+	
+	if (htpCheck == false)
+	{
+		this->gamestate_btn->update(this->mousePosView);
+		this->acheivment_btn->update(this->mousePosView);
+		this->exit_btn->update(this->mousePosView);
+	}
+	
+	
+	this->backToState_btn->update(this->mousePosView);
 
 	if (this->gamestate_btn->isPressed())
 	{
@@ -48,7 +65,7 @@ void MainMenuState::updateButtons()
 
 	if (this->acheivment_btn->isPressed())
 	{
-		std::cout << "COMING SOON\n";
+		htpCheck = true;
 	}
 
 
@@ -58,6 +75,10 @@ void MainMenuState::updateButtons()
 		this->quit = true;
 	}
 
+	if (this->backToState_btn->isPressed() && htpCheck == true)
+	{
+		htpCheck = false;
+	}
 
 }
 
@@ -94,4 +115,9 @@ void MainMenuState::render(sf::RenderTarget* target)
 	this->acheivment_btn->renderButton(target);
 	this->exit_btn->renderButton(target);
 
+	if (htpCheck)
+	{
+		target->draw(this->HTP);
+		this->backToState_btn->renderButton(target);
+	}
 }
