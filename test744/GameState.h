@@ -57,7 +57,7 @@ private:
     std::string EVspacial[] = { "","" };*/
 
     //eventCount
-    int babyEvent = 13;
+    int babyEvent = 15;
     int childEvent = 15;
     //int primaryEvent = 2;
     int seccondaryEvent = 16;
@@ -66,7 +66,7 @@ private:
     int secondaryAdultEvent = 15;
     int elderlyEvent = 15;
 
-    int specialEvent = 5;
+    int specialEvent = 10;
 
     int Evnow;
     int randtype;

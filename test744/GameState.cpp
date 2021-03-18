@@ -1,4 +1,4 @@
-#include "GameState.h"
+﻿#include "GameState.h"
 
 GameState::GameState(sf::RenderWindow* window, std::stack<State*>* states)
 	:State(window, states)
@@ -12,7 +12,7 @@ GameState::GameState(sf::RenderWindow* window, std::stack<State*>* states)
 
 	//(x, y, width, height, font, "text", text size , idle color, hover color, active color, text color)
 	this->backToState_btn = new Button(10, 660, 150, 50, &this->font, "Back", 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-	this->aged_btn = new Button(415, 420, 250, 100, &this->font, "aged!", 60, sf::Color(70, 70, 70, 250), sf::Color(150, 150, 150, 250), sf::Color(20, 20, 20, 250), sf::Color::White);
+	this->aged_btn = new Button(415, 420, 250, 100, &this->font, "Age++", 60, sf::Color(70, 70, 70, 250), sf::Color(150, 150, 150, 250), sf::Color(20, 20, 20, 250), sf::Color::White);
 
 	//(x, y, font, text size, "text", data, text color)
 	this->ageShow = new Button(100, 100, &this->font, 25, "age : ", age, sf::Color::White);
@@ -98,21 +98,28 @@ void GameState::endState()
 //event
 int GameState::eventRandom()
 {
-	if (random(101) <= (pow(age, 2) / 100 + 10) * (1 - Health / 200 * pow(0.99, age / 10)))
+	if (age>=25)
 	{
-		std::cout << (pow(age, 2) / 100 + 10) * (1 - Health / 200 * pow(0.99, age / 10)) << std::endl;
-		Evnow = -1;
-		return Evnow;
+		if (random(101) <= ((pow(age, 2) / 100 + 10) * (1 - Health / 200 * pow(0.99, age / 10))) / 8)
+		{
+			std::cout << (pow(age, 2) / 100 + 10) * (1 - Health / 200 * pow(0.99, age / 10)) << std::endl;
+			Evnow = -1;
+			return Evnow;
+		}
 	}
 
-	if (age == 6)
+	if (age == 6||age == 19||age == 23||age==60)
 	{
 		return Evnow = 100;
+	}
+	if (age == 13)
+	{
+		return Evnow = 101;
 	}
 
 
 	randtype = random(101);
-	if (randtype >= 20 && randtype <= 100) {
+	if (randtype >= 20 && randtype <= 80) {
 		if (age >= 0 && age <= 5)
 			Evnow = random(babyEvent);
 		if (age >= 6 && age <= 14)
@@ -147,11 +154,11 @@ void GameState::creatEvent(int Evnow)
 	{
 		if (age==0)
 		{
-			eventText = "You mother Abortion\nYou are dead. xd";
+		eventText = "You mother Abortion\nYou are dead. xd";
 		}
 		eventText = "You are dead. xd"; 
 
-			eventSelectText1 = "Back to main menu.";
+		eventSelectText1 = "Back to main menu.";
 
 		delete this->eventSelectButton1;
 		this->eventSelectButton1 = new Button(695, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
@@ -161,7 +168,181 @@ void GameState::creatEvent(int Evnow)
 
 		return;
 	}
+	if (Evnow == -2)
+	{
+		eventText = "Win the lottery.";
 
+		eventSelectText1 = "Ok.";
+
+		delete this->eventSelectButton1;
+		this->eventSelectButton1 = new Button(695, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+		buttonCount = 1;
+		eventCheck = 1;
+
+		return;
+	}
+	if (Evnow == -3)
+	{
+		if (age>6)
+		{
+			eventText = "Hit by a car.\ngo to another world.";
+
+			eventSelectText1 = "Ok.";
+
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(695, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+			buttonCount = 1;
+			eventCheck = 1;
+		}
+		return;
+	}
+	if (Evnow == -4)
+	{
+		if (age >= 13)
+		{
+			eventSelectText1 = "All in.";
+			eventSelectText2 = "Half.";
+			eventSelectText3 = "Bet.";
+
+			eventText = "Go to play casino.";
+
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton2;
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton3;
+			this->eventSelectButton3 = new Button(570, 340, 225, 50, &this->font, eventSelectText3, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+			buttonCount = 3;
+			eventCheck = 1;
+		}
+		return;
+	}
+	if (Evnow == -5)
+	{
+		if (age >= 6)
+		{
+			eventSelectText1 = "Do.";
+			eventSelectText2 = "Not.";
+
+			eventText = "Wake up to make merit\n to monks in the morning.";
+
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton2;
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	
+			buttonCount = 2;
+			eventCheck = 1;
+		}
+		return;
+	}
+	if (Evnow == -6)
+	{
+		if (age >= 6)
+		{
+			eventSelectText1 = "Return.";
+			eventSelectText2 = "Not return.";
+
+			eventText = "Found a purse.";
+
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton2;
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+			buttonCount = 2;
+			eventCheck = 1;
+		}
+		return;
+	}
+	if (Evnow == -7)
+	{
+		if (age >= 6)
+		{
+			eventSelectText1 = "Agree.";
+			eventSelectText2 = "Reject.";
+
+			eventText = "Invite you to smoke.";
+
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton2;
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+			buttonCount = 2;
+			eventCheck = 1;
+		}
+		return;
+	}
+	if (Evnow == -8)
+	{
+		if (Happiness <= 50)
+		{
+			eventSelectText1 = "Agree.";
+
+			eventText = "stressed out.";
+
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+		
+			buttonCount = 1;
+			eventCheck = 1;
+		}
+		return;
+	}
+	if (Evnow == -9)
+	{
+		if (age <= 60&&age>=23)
+		{
+			eventSelectText1 = "steal.";
+			eventSelectText2 = "intimidate.";
+			eventSelectText3 = "Nothing";
+			eventText = "You find boss \nsecret lover.";
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton2;
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton3;
+			this->eventSelectButton3 = new Button(570, 340, 225, 50, &this->font, eventSelectText3, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+			buttonCount = 3;
+			eventCheck = 1;
+		}
+		return;
+	}
+	if (Evnow == -10)
+	{
+		if ( age >= 6)
+		{
+			eventSelectText1 = "Ok.";
+
+			eventText = "Car accident.";
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	
+			buttonCount = 1;
+			eventCheck = 1;
+		}
+		return;
+	}
+	if (Evnow == -11)
+	{
+			eventSelectText1 = "Go.";
+			eventSelectText2 = "Reject.";
+
+			eventText = "You donate blood.";
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton2;
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			
+			buttonCount = 2;
+			eventCheck = 1;
+		return;
+	}
 	//baby event
 	if (age >= 0 && age <= 5)
 	{
@@ -399,8 +580,8 @@ void GameState::creatEvent(int Evnow)
 
 			std::cout << "case 12\n";
 			break;
-		case 13:	
-            eventSelectText1 = "Eat.";
+		case 13:
+			eventSelectText1 = "Eat.";
 			eventSelectText2 = "Don't Eat";
 
 			eventText = "Parents make mashed banana for you.";
@@ -417,7 +598,7 @@ void GameState::creatEvent(int Evnow)
 			std::cout << "case 13\n";
 			break;
 		case 14:
-		    eventSelectText1 = "Tell teacher.";
+			eventSelectText1 = "Tell teacher.";
 			eventSelectText2 = "Do notthing.";
 
 			eventText = "You shit your pants.";
@@ -432,7 +613,8 @@ void GameState::creatEvent(int Evnow)
 			eventCheck = 1;
 
 			std::cout << "case 14\n";
-			break;	
+			break;
+
 		}
 
 	}
@@ -742,6 +924,20 @@ void GameState::creatEvent(int Evnow)
 			eventCheck = 1;
 
 			std::cout << "case 100\n";
+			break;
+		case 101:
+			eventSelectText1 = "Ok.";
+
+			eventText = "Attend secondary school.";
+
+			this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+
+			buttonCount = 1;
+			eventCheck = 1;
+
+			std::cout << "case 101\n";
 			break;
 		}
 	}
@@ -1467,6 +1663,20 @@ void GameState::creatEvent(int Evnow)
 
 			std::cout << "case 21\n";
 			break;
+		case 100:
+			eventSelectText1 = "Ok.";
+
+			eventText = "Attend university.";
+
+			this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+
+			buttonCount = 1;
+			eventCheck = 1;
+
+			std::cout << "case 100\n";
+			break;
 		}
 	}
 
@@ -1730,6 +1940,40 @@ void GameState::creatEvent(int Evnow)
 
 			std::cout << "case 14\n";
 			break;
+		case 100:
+			if (Smart>50)
+			{
+				eventSelectText1 = "Teacher.";
+				eventSelectText2 = "Doctor.";
+				eventSelectText3 = "Engineering.";
+				eventSelectText4 = "Scientist.";
+			}
+			else
+			{
+				eventSelectText1 = "Painter.";
+				eventSelectText2 = "Soldier.";
+				eventSelectText3 = "Boxer.";
+				eventSelectText4 = "Youtuber.";
+			}
+			
+
+			eventText = "You start working at.";
+
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton2;
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton3;
+			this->eventSelectButton3 = new Button(570, 340, 225, 50, &this->font, eventSelectText3, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton4;
+			this->eventSelectButton4 = new Button(820, 340, 225, 50, &this->font, eventSelectText4, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+
+			buttonCount = 4;
+			eventCheck = 1;
+
+			std::cout << "case 100\n";
+			break;
 		}
 	}
 
@@ -1953,7 +2197,7 @@ void GameState::creatEvent(int Evnow)
 			eventSelectText2 = "Call the police.";
 			eventSelectText3 = "Notthing.";
 
-			eventText = "The thief is going to the house..";
+			eventText = "The thief is going to the house.";
 
 			delete this->eventSelectButton1;
 			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
@@ -1986,6 +2230,19 @@ void GameState::creatEvent(int Evnow)
 			eventCheck = 1;
 
 			std::cout << "case 14\n";
+			break; 
+		case 100:
+			eventSelectText1 = "Ok.";
+
+			eventText = "Retire.";
+
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	
+			buttonCount = 1;
+			eventCheck = 1;
+
+			std::cout << "case 100\n";
 			break;
 		}
 	}
@@ -1996,11 +2253,11 @@ void GameState::creatEvent(int Evnow)
 		switch (Evnow)
 		{
 		case 0:
-			eventSelectText1 = "Sorry.";
-			eventSelectText2 = "Retaliate.";
+			eventSelectText1 = "Yes.";
+			eventSelectText2 = "No.";
 
 
-			eventText = "Being cursed by the boss.";
+			eventText = "Take a massage.";
 
 			delete this->eventSelectButton1;
 			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
@@ -2258,6 +2515,7 @@ void GameState::creatEvent(int Evnow)
 			break;
 		}
 	}
+
 }
 
 
@@ -2275,6 +2533,172 @@ void GameState::updateAnswer()
 		if (answer == 1)
 		{
 			this->quit = true;
+		}
+	}
+	if (Evnow == -2)
+	{
+		switch (answer)
+		{
+		case 1:
+			Happiness = cheak(Happiness, random(6) + 5);
+			Look = cheak(Look, 5);
+			answer = 0; eventCheck = false;
+			break;
+		}
+	}
+	if (Evnow == -3)
+	{
+		if (answer == 1)
+		{
+			this->quit = true;
+		}
+	}
+	if (Evnow == -4)
+	{
+		switch (answer)
+		{
+		case 1:
+			if (random(2)==0)
+			{
+				this->quit = true;
+			}
+			else
+			{
+				Happiness = cheak(Happiness,30);
+			}
+			answer = 0; eventCheck = false;
+			break;
+		case 2:
+			if (random(2) == 0)
+			{
+				Happiness = cheak(Happiness, -15);
+			}
+			else
+			{
+				Happiness = cheak(Happiness, 15);
+			}
+			answer = 0; eventCheck = false;
+			break;
+		case 3:
+			if (random(2) == 0)
+			{
+				Happiness = cheak(Happiness, -5);
+			}
+			else
+			{
+				Happiness = cheak(Happiness, 5);
+			}
+			answer = 0; eventCheck = false;
+			break;
+		}
+	}
+	if (Evnow == -5)
+	{
+		switch (answer)
+		{
+		case 1:
+			Moral = cheak(Moral, 15);
+			answer = 0; eventCheck = false;
+			break;
+		case 2:
+			answer = 0; eventCheck = false;
+			break;
+		}
+	}
+	if (Evnow == -6)
+	{
+		switch (answer)
+		{
+		case 1:
+			Moral = cheak(Moral, 10);
+			Look = cheak(Look, 20);
+			answer = 0; eventCheck = false;
+			break;
+		case 2:
+			if (random(2)==0)
+			{
+				Moral = cheak(Moral,-15);
+			}
+			else
+			{
+				Happiness = cheak(Happiness,10);
+			}
+			answer = 0; eventCheck = false;
+			break;
+		}
+	}
+	if (Evnow == -7)
+	{
+		switch (answer)
+		{
+		case 1:
+			Health = cheak(Health, -20);
+			Happiness = cheak(Happiness, -10);
+			answer = 0; eventCheck = false;
+			break;
+			}
+	}
+	if (Evnow == -8)
+	{
+		if (age > 6)
+		{
+			switch (answer)
+			{
+			case 1:
+				Health = cheak(Health, -10);
+				Happiness = cheak(Happiness, 20);
+				Look = cheak(Look, 10);
+				answer = 0; eventCheck = false;
+				break;
+			case 2:
+				Look = cheak(Look, -10);
+				answer = 0; eventCheck = false;
+				break;
+			}
+		}
+	}
+	if (Evnow == -9)
+	{
+		switch (answer)
+		{
+		case 1:
+			Happiness = cheak(Happiness, 30);
+			Look = cheak(Look, -10);
+			answer = 0; eventCheck = false;
+			break;
+		case 2:
+			Look = cheak(Look, -10);
+			Happiness = cheak(Happiness, 15);
+			answer = 0; eventCheck = false;
+			break;
+		case 3:
+			answer = 0; eventCheck = false;
+			break;
+		}
+	}
+	if (Evnow == -10)
+	{
+		switch (answer)
+		{
+		case 1:
+			Smart = cheak(Smart,-30);
+			answer = 0; eventCheck = false;
+			break;
+		}
+	}
+	if (Evnow == -11)
+	{
+		switch (answer)
+		{
+		case 1:
+			Look = cheak(Look,10);
+			Health = cheak(Health, -15);
+			Moral = cheak(Moral, 20);
+			answer = 0; eventCheck = false;
+			break;
+		case 2:
+			answer = 0; eventCheck = false;
+			break;
 		}
 	}
 
@@ -2473,34 +2897,34 @@ void GameState::updateAnswer()
 			}
 			break;
 		case 13:
-		   switch(answer)
-		   {
-            case 1:
-			      Happiness =cheak(Happiness,3);
-				  Health =cheak(Health,5);
-				  answer =0; eventCheck = false;
-				  break;
+			switch (answer)
+			{
+			case 1:
+				Happiness = cheak(Happiness, 3);
+				Health = cheak(Health, 5);
+				answer = 0; eventCheck = false;
+				break;
 			case 2:
-			      Happiness =cheak(Happiness,-2);
-				  Health =cheak(Health,-2);
-				  answer =0; eventCheck = false;
-				  break;	  
-		   }	
-		   break;
-		 case 14:
-		 switch(answer) 
-		 {
-			 case 1:
-			      Happiness =cheak(Happiness,-3);
-				  Look =cheak(Look,-3);
-				  answer =0; eventCheck = false;
-				  break;
+				Happiness = cheak(Happiness, -2);
+				Health = cheak(Health, -2);
+				answer = 0; eventCheck = false;
+				break;
+			}
+			break;
+		case 14:
+			switch (answer)
+			{
+			case 1:
+				Happiness = cheak(Happiness, -3);
+				Look = cheak(Look, -3);
+				answer = 0; eventCheck = false;
+				break;
 			case 2:
-			      Happiness =cheak(Happiness,-1);
-				  answer =0; eventCheck = false;
-				  break;	  
-		 } 
-		 break;
+				Happiness = cheak(Happiness, -1);
+				answer = 0; eventCheck = false;
+				break;
+			}
+			break;
 		}
 	}
 
@@ -2778,6 +3202,15 @@ void GameState::updateAnswer()
 				answer = 0; eventCheck = false;
 				break;
 			}
+			break;
+		case 101:
+			switch (answer)
+			{
+			case 1:
+				answer = 0; eventCheck = false;
+				break;
+			}
+			break;
 		}
 	}
 
@@ -3645,6 +4078,23 @@ void GameState::updateAnswer()
 				break;
 			}
 			break;
+		case 100:
+			switch (answer)
+			{
+			case 1:
+				answer = 0; eventCheck = false;
+				break;
+			case 2:
+				answer = 0; eventCheck = false;
+				break;
+			case 3:
+				answer = 0; eventCheck = false;
+				break;
+			case 4:
+				answer = 0; eventCheck = false;
+				break;
+			}
+			break;
 		}
 	}
 
@@ -3884,6 +4334,14 @@ void GameState::updateAnswer()
 				break;
 			}
 			break;
+		case 100:
+			switch (answer)
+			{
+			case 1:
+				answer = 0; eventCheck = false;
+				break;
+			}
+			break;
 		}
 	}
 	if (age >= 61)
@@ -3894,13 +4352,13 @@ void GameState::updateAnswer()
 			switch (answer)
 			{
 			case 1:
-				Happiness = cheak(Happiness, -15);
-				Look = cheak(Look, -5);
+				Happiness = cheak(Happiness, 15);
+				Health = cheak(Health, 5);
 				answer = 0; eventCheck = false;
 				break;
 			case 2:
-				Happiness = cheak(Happiness, 5);
-				Look = cheak(Look, 5);
+				Happiness = cheak(Happiness, -5);
+				Health = cheak(Health, -5);
 				answer = 0; eventCheck = false;
 				break;
 			}
