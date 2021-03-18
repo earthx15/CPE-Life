@@ -1,4 +1,4 @@
-﻿#include "GameState.h"
+#include "GameState.h"
 
 GameState::GameState(sf::RenderWindow* window, std::stack<State*>* states)
 	:State(window, states)
@@ -22,24 +22,13 @@ GameState::GameState(sf::RenderWindow* window, std::stack<State*>* states)
 	this->dataIV = new Button(700, 600, &this->font, 25, "Look : ", Look, sf::Color::White);
 	this->dataV = new Button(850, 600, &this->font, 25, "Moral : ", Moral, sf::Color::White);
 
+	this->bgTexture.loadFromFile("bg game.png");
+
 	this->Background.setSize(sf::Vector2f(1080, 720));
-	this->Background.setFillColor(sf::Color::Black);
+	this->Background.setTexture(&bgTexture);
+	
 
-	this->BackgroundLog.setSize(sf::Vector2f(540, 540));
-	this->BackgroundLog.setFillColor(sf::Color::Blue);
-	this->BackgroundLog.setPosition(0, 0);
-
-	this->BackgroundSituation.setSize(sf::Vector2f(540, 540));
-	this->BackgroundSituation.setFillColor(sf::Color::Green);
-	this->BackgroundSituation.setPosition(540, 0);
-
-	this->BackgroundName.setSize(sf::Vector2f(200, 100));
-	this->BackgroundName.setFillColor(sf::Color::Red);
-	this->BackgroundName.setPosition(0, 0);
-
-	this->BackgroundStatus.setSize(sf::Vector2f(1080, 180));
-	this->BackgroundStatus.setFillColor(sf::Color::Black);
-	this->BackgroundStatus.setPosition(0, 540);
+	
 
 	this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 	this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
@@ -84,7 +73,8 @@ int GameState::cheak(int base, int sub) {
 	else if (base + sub < 0)
 	{
 		return 0;
-	}else 
+	}
+	else
 	{
 		return base += sub;
 	}
@@ -98,7 +88,7 @@ void GameState::endState()
 //event
 int GameState::eventRandom()
 {
-	if (age>=25)
+	if (age >= 25)
 	{
 		if (random(101) <= ((pow(age, 2) / 100 + 10) * (1 - Health / 200 * pow(0.99, age / 10))) / 8)
 		{
@@ -108,7 +98,7 @@ int GameState::eventRandom()
 		}
 	}
 
-	if (age == 6||age == 19||age == 23||age==60)
+	if (age == 6 || age == 19 || age == 23 || age == 60)
 	{
 		return Evnow = 100;
 	}
@@ -152,11 +142,11 @@ void GameState::creatEvent(int Evnow)
 
 	if (Evnow == -1)
 	{
-		if (age==0)
+		if (age == 0)
 		{
-		eventText = "You mother Abortion\nYou are dead. xd";
+			eventText = "You mother Abortion\nYou are dead. xd";
 		}
-		eventText = "You are dead. xd"; 
+		eventText = "You are dead. xd";
 
 		eventSelectText1 = "Back to main menu.";
 
@@ -184,7 +174,7 @@ void GameState::creatEvent(int Evnow)
 	}
 	if (Evnow == -3)
 	{
-		if (age>6)
+		if (age > 6)
 		{
 			eventText = "Hit by a car.\ngo to another world.";
 
@@ -233,7 +223,7 @@ void GameState::creatEvent(int Evnow)
 			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
 			delete this->eventSelectButton2;
 			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-	
+
 			buttonCount = 2;
 			eventCheck = 1;
 		}
@@ -287,7 +277,7 @@ void GameState::creatEvent(int Evnow)
 
 			delete this->eventSelectButton1;
 			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-		
+
 			buttonCount = 1;
 			eventCheck = 1;
 		}
@@ -295,7 +285,7 @@ void GameState::creatEvent(int Evnow)
 	}
 	if (Evnow == -9)
 	{
-		if (age <= 60&&age>=23)
+		if (age <= 60 && age >= 23)
 		{
 			eventSelectText1 = "steal.";
 			eventSelectText2 = "intimidate.";
@@ -315,14 +305,14 @@ void GameState::creatEvent(int Evnow)
 	}
 	if (Evnow == -10)
 	{
-		if ( age >= 6)
+		if (age >= 6)
 		{
 			eventSelectText1 = "Ok.";
 
 			eventText = "Car accident.";
 			delete this->eventSelectButton1;
 			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-	
+
 			buttonCount = 1;
 			eventCheck = 1;
 		}
@@ -330,17 +320,17 @@ void GameState::creatEvent(int Evnow)
 	}
 	if (Evnow == -11)
 	{
-			eventSelectText1 = "Go.";
-			eventSelectText2 = "Reject.";
+		eventSelectText1 = "Go.";
+		eventSelectText2 = "Reject.";
 
-			eventText = "You donate blood.";
-			delete this->eventSelectButton1;
-			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-			delete this->eventSelectButton2;
-			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-			
-			buttonCount = 2;
-			eventCheck = 1;
+		eventText = "You donate blood.";
+		delete this->eventSelectButton1;
+		this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+		delete this->eventSelectButton2;
+		this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+		buttonCount = 2;
+		eventCheck = 1;
 		return;
 	}
 	//baby event
@@ -1941,7 +1931,7 @@ void GameState::creatEvent(int Evnow)
 			std::cout << "case 14\n";
 			break;
 		case 100:
-			if (Smart>50)
+			if (Smart > 50)
 			{
 				eventSelectText1 = "Teacher.";
 				eventSelectText2 = "Doctor.";
@@ -1955,7 +1945,7 @@ void GameState::creatEvent(int Evnow)
 				eventSelectText3 = "Boxer.";
 				eventSelectText4 = "Youtuber.";
 			}
-			
+
 
 			eventText = "You start working at.";
 
@@ -2109,7 +2099,7 @@ void GameState::creatEvent(int Evnow)
 			std::cout << "case 7\n";
 			break;
 		case 8:
-			eventSelectText1 = "ํYes.";
+			eventSelectText1 = "�Yes.";
 			eventSelectText2 = "No.";
 
 			eventText = "Golfing with friends.";
@@ -2230,7 +2220,7 @@ void GameState::creatEvent(int Evnow)
 			eventCheck = 1;
 
 			std::cout << "case 14\n";
-			break; 
+			break;
 		case 100:
 			eventSelectText1 = "Ok.";
 
@@ -2238,7 +2228,7 @@ void GameState::creatEvent(int Evnow)
 
 			delete this->eventSelectButton1;
 			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
-	
+
 			buttonCount = 1;
 			eventCheck = 1;
 
@@ -2558,13 +2548,13 @@ void GameState::updateAnswer()
 		switch (answer)
 		{
 		case 1:
-			if (random(2)==0)
+			if (random(2) == 0)
 			{
 				this->quit = true;
 			}
 			else
 			{
-				Happiness = cheak(Happiness,30);
+				Happiness = cheak(Happiness, 30);
 			}
 			answer = 0; eventCheck = false;
 			break;
@@ -2615,13 +2605,13 @@ void GameState::updateAnswer()
 			answer = 0; eventCheck = false;
 			break;
 		case 2:
-			if (random(2)==0)
+			if (random(2) == 0)
 			{
-				Moral = cheak(Moral,-15);
+				Moral = cheak(Moral, -15);
 			}
 			else
 			{
-				Happiness = cheak(Happiness,10);
+				Happiness = cheak(Happiness, 10);
 			}
 			answer = 0; eventCheck = false;
 			break;
@@ -2636,7 +2626,7 @@ void GameState::updateAnswer()
 			Happiness = cheak(Happiness, -10);
 			answer = 0; eventCheck = false;
 			break;
-			}
+		}
 	}
 	if (Evnow == -8)
 	{
@@ -2681,7 +2671,7 @@ void GameState::updateAnswer()
 		switch (answer)
 		{
 		case 1:
-			Smart = cheak(Smart,-30);
+			Smart = cheak(Smart, -30);
 			answer = 0; eventCheck = false;
 			break;
 		}
@@ -2691,7 +2681,7 @@ void GameState::updateAnswer()
 		switch (answer)
 		{
 		case 1:
-			Look = cheak(Look,10);
+			Look = cheak(Look, 10);
 			Health = cheak(Health, -15);
 			Moral = cheak(Moral, 20);
 			answer = 0; eventCheck = false;
@@ -2711,7 +2701,7 @@ void GameState::updateAnswer()
 			switch (answer)
 			{
 			case 1:
-				Happiness =cheak(Happiness,random(6) + 5);
+				Happiness = cheak(Happiness, random(6) + 5);
 				answer = 0; eventCheck = false;
 				break;
 			case 2:
@@ -2722,7 +2712,7 @@ void GameState::updateAnswer()
 			switch (answer)
 			{
 			case 1:
-				Health =cheak(Health,random(6) + 10);
+				Health = cheak(Health, random(6) + 10);
 				answer = 0; eventCheck = false;
 				break;
 			case 2:
@@ -2734,11 +2724,11 @@ void GameState::updateAnswer()
 			switch (answer)
 			{
 			case 1:
-				Health =cheak(Health,10);
+				Health = cheak(Health, 10);
 				answer = 0; eventCheck = false;
 				break;
 			case 2:
-				Health = cheak(Health,-10);
+				Health = cheak(Health, -10);
 				answer = 0; eventCheck = false;
 				break;
 			}
@@ -2747,7 +2737,7 @@ void GameState::updateAnswer()
 			switch (answer)
 			{
 			case 1:
-				Happiness = cheak(Happiness,20);
+				Happiness = cheak(Happiness, 20);
 				answer = 0; eventCheck = false;
 				break;
 			}
@@ -2756,11 +2746,11 @@ void GameState::updateAnswer()
 			switch (answer)
 			{
 			case 1:
-				Health = cheak(Health,-2);
+				Health = cheak(Health, -2);
 				answer = 0; eventCheck = false;
 				break;
 			case 2:
-				Health = cheak(Health,-10);
+				Health = cheak(Health, -10);
 				answer = 0; eventCheck = false;
 				break;
 			}
@@ -2769,11 +2759,11 @@ void GameState::updateAnswer()
 			switch (answer)
 			{
 			case 1:
-				Happiness =cheak(Happiness,10);
+				Happiness = cheak(Happiness, 10);
 				answer = 0; eventCheck = false;
 				break;
 			case 2:
-				Happiness = cheak(Happiness,-8);
+				Happiness = cheak(Happiness, -8);
 				answer = 0; eventCheck = false;
 				break;
 			}
@@ -2782,13 +2772,13 @@ void GameState::updateAnswer()
 			switch (answer)
 			{
 			case 1:
-				Happiness = cheak(Happiness,2);
-				Moral = cheak(Moral,5);
+				Happiness = cheak(Happiness, 2);
+				Moral = cheak(Moral, 5);
 				answer = 0; eventCheck = false;
 				break;
 			case 2:
-				Happiness = cheak(Happiness,-8);
-				Moral =cheak(Moral,-5);
+				Happiness = cheak(Happiness, -8);
+				Moral = cheak(Moral, -5);
 				answer = 0; eventCheck = false;
 				break;
 			}
@@ -2797,12 +2787,12 @@ void GameState::updateAnswer()
 			switch (answer)
 			{
 			case 1:
-				Happiness =cheak(Happiness,5);
-				Health = cheak(Health,5);
+				Happiness = cheak(Happiness, 5);
+				Health = cheak(Health, 5);
 				answer = 0; eventCheck = false;
 				break;
 			case 2:
-				Happiness =cheak(Happiness,-3);
+				Happiness = cheak(Happiness, -3);
 				answer = 0; eventCheck = false;
 				break;
 			}
@@ -2811,11 +2801,11 @@ void GameState::updateAnswer()
 			switch (answer)
 			{
 			case 1:
-				Happiness = cheak(Happiness,-30);
+				Happiness = cheak(Happiness, -30);
 				answer = 0; eventCheck = false;
 				break;
 			case 2:
-				Happiness = cheak(Happiness,-30);
+				Happiness = cheak(Happiness, -30);
 				answer = 0; eventCheck = false;
 				break;
 			}
@@ -2824,13 +2814,13 @@ void GameState::updateAnswer()
 			switch (answer)
 			{
 			case 1:
-				Happiness = cheak(Happiness,5);
-				Moral = cheak(Moral,3);
+				Happiness = cheak(Happiness, 5);
+				Moral = cheak(Moral, 3);
 				answer = 0; eventCheck = false;
 				break;
 			case 2:
 				Happiness = cheak(Happiness, -5);
-				Moral = cheak(Moral,-2);
+				Moral = cheak(Moral, -2);
 				answer = 0; eventCheck = false;
 				break;
 			}
@@ -2843,7 +2833,7 @@ void GameState::updateAnswer()
 				answer = 0; eventCheck = false;
 				break;
 			case 2:
-				Happiness = cheak(Happiness,-7);
+				Happiness = cheak(Happiness, -7);
 				answer = 0; eventCheck = false;
 				break;
 			}
@@ -2885,7 +2875,7 @@ void GameState::updateAnswer()
 			switch (answer)
 			{
 			case 1:
-				Happiness =cheak(Happiness, 2);
+				Happiness = cheak(Happiness, 2);
 				Moral = cheak(Moral, 5);
 				Look = cheak(Look, 2);
 				answer = 0; eventCheck = false;
@@ -2989,8 +2979,8 @@ void GameState::updateAnswer()
 			{
 			case 1:
 				Happiness = cheak(Happiness, 20);
-				Look = cheak(Look,-20);
-				Smart = cheak(Smart,-30);
+				Look = cheak(Look, -20);
+				Smart = cheak(Smart, -30);
 				answer = 0; eventCheck = false;
 				break;
 			case 2:
@@ -3266,7 +3256,7 @@ void GameState::updateAnswer()
 			case 1:
 				Happiness = cheak(Happiness, 20);
 				Look = cheak(Look, -20);
-				Smart = cheak(Smart,-30);
+				Smart = cheak(Smart, -30);
 				answer = 0; eventCheck = false;
 				break;
 			case 2:
@@ -3855,7 +3845,7 @@ void GameState::updateAnswer()
 				answer = 0; eventCheck = false;
 				break;
 			case 2:
-				Look = cheak(Look,- 10);
+				Look = cheak(Look, -10);
 				answer = 0; eventCheck = false;
 				break;
 			}
@@ -4710,10 +4700,7 @@ void GameState::render(sf::RenderTarget* target)
 		target = this->window;
 
 	target->draw(this->Background);
-	target->draw(this->BackgroundLog);
-	target->draw(this->BackgroundName);
-	target->draw(this->BackgroundStatus);
-	target->draw(this->BackgroundSituation);
+	
 
 	//render buttons
 	this->aged_btn->renderButton(target);

@@ -17,6 +17,8 @@ private:
     sf::RectangleShape BackgroundSituation;
     sf::RectangleShape BackgroundStatus;
 
+    sf::Texture bgTexture;
+
     //Buttons(can be clicked)
     Button* backToState_btn;
     Button* aged_btn;
@@ -95,7 +97,7 @@ public:
     int eventRandom();
 
     void creatEvent(int Evnow);
-    int cheak(int base,int sub);
+    int cheak(int base, int sub);
 
 
     //update
