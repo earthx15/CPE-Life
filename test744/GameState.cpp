@@ -1,4 +1,4 @@
-﻿#include "GameState.h"
+#include "GameState.h"
 
 GameState::GameState(sf::RenderWindow* window, std::stack<State*>* states)
 	:State(window, states)
@@ -399,7 +399,40 @@ void GameState::creatEvent(int Evnow)
 
 			std::cout << "case 12\n";
 			break;
+		case 13:	
+            eventSelectText1 = "Eat.";
+			eventSelectText2 = "Don't Eat";
 
+			eventText = "Parents make mashed banana for you.";
+
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton2;
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+
+			buttonCount = 2;
+			eventCheck = 1;
+
+			std::cout << "case 13\n";
+			break;
+		case 14:
+		    eventSelectText1 = "Tell teacher.";
+			eventSelectText2 = "Do notthing.";
+
+			eventText = "You shit your pants.";
+
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton2;
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+
+			buttonCount = 2;
+			eventCheck = 1;
+
+			std::cout << "case 14\n";
+			break;	
 		}
 
 	}
@@ -2439,6 +2472,35 @@ void GameState::updateAnswer()
 				break;
 			}
 			break;
+		case 13:
+		   switch(answer)
+		   {
+            case 1:
+			      Happiness =cheak(Happiness,3);
+				  Health =cheak(Health,5);
+				  answer =0; eventCheck = false;
+				  break;
+			case 2:
+			      Happiness =cheak(Happiness,-2);
+				  Health =cheak(Health,-2);
+				  answer =0; eventCheck = false;
+				  break;	  
+		   }	
+		   break;
+		 case 14:
+		 switch(answer) 
+		 {
+			 case 1:
+			      Happiness =cheak(Happiness,-3);
+				  Look =cheak(Look,-3);
+				  answer =0; eventCheck = false;
+				  break;
+			case 2:
+			      Happiness =cheak(Happiness,-1);
+				  answer =0; eventCheck = false;
+				  break;	  
+		 } 
+		 break;
 		}
 	}
 
