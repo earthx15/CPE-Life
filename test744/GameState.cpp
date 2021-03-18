@@ -1038,7 +1038,7 @@ void GameState::creatEvent(int Evnow)
 			buttonCount = 1;
 			eventCheck = 1;
 
-			std::cout << "case 0\n";
+			std::cout << "case 1\n";
 			break;
 		case 2:
 			eventSelectText1 = "Go.";
@@ -1284,6 +1284,132 @@ void GameState::creatEvent(int Evnow)
 			eventCheck = 1;
 
 			std::cout << "case 14\n";
+			break;
+		case 15: // done
+			eventSelectText1 = "Yes.";
+			eventSelectText2 = "No.";
+
+			eventText = "Friend asked to copy the exam.";
+
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton2;
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+
+
+			buttonCount = 2;
+			eventCheck = 1;
+
+			std::cout << "case 15\n";
+			break;
+		case 16://done
+			eventSelectText1 = "Yes.";
+			eventSelectText2 = "No.";
+
+			eventText = "Make a driving license.";
+
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton2;
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+
+
+			buttonCount = 2;
+			eventCheck = 1;
+
+			std::cout << "case 16\n";
+			break;
+		case 17://done
+			eventSelectText1 = "Yes.";
+			eventSelectText2 = "No.";
+
+			eventText = "Read books before the exam.";
+
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton2;
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+
+
+			buttonCount = 2;
+			eventCheck = 1;
+
+			std::cout << "case 17\n";
+			break;
+		case 18://done
+			eventSelectText1 = "Yes.";
+			eventSelectText2 = "No.";
+
+			eventText = "Join a sports club.";
+
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton2;
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+
+
+			buttonCount = 2;
+			eventCheck = 1;
+
+			std::cout << "case 18\n";
+			break;
+		case 19://done
+			eventSelectText1 = "Yes.";
+			eventSelectText2 = "No.";
+
+			eventText = "Join the welcome activities.";
+
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton2;
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+
+
+			buttonCount = 2;
+			eventCheck = 1;
+
+			std::cout << "case 19\n";
+			break;
+		case 20://done
+			eventSelectText1 = "Yes.";
+			eventSelectText2 = "No.";
+
+			eventText = "Parents bought a car for.";
+
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton2;
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+
+
+			buttonCount = 2;
+			eventCheck = 1;
+
+			std::cout << "case 20\n";
+			break;
+		case 21://done
+			eventSelectText1 = "Yes.";
+			eventSelectText2 = "No.";
+
+			eventText = "A friend invited me to read a book..";
+
+			delete this->eventSelectButton1;
+			this->eventSelectButton1 = new Button(570, 280, 225, 50, &this->font, eventSelectText1, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+			delete this->eventSelectButton2;
+			this->eventSelectButton2 = new Button(820, 280, 225, 50, &this->font, eventSelectText2, selectSize, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+
+
+			buttonCount = 2;
+			eventCheck = 1;
+
+			std::cout << "case 21\n";
 			break;
 		}
 	}
@@ -3074,6 +3200,112 @@ void GameState::updateAnswer()
 			case 2:
 				Look += 5;
 				Happiness += 5;
+				answer = 0; eventCheck = false;
+				break;
+			}
+			break;
+		case 15: //done
+			switch (answer)
+			{
+			case 1:
+				Moral -= 10;
+				Look -= 10;
+				answer = 0; eventCheck = false;
+				break;
+			case 2:
+				Look += 5;
+				answer = 0; eventCheck = false;
+				break;
+			}
+			break;
+		case 16: //done
+			switch (answer)
+			{
+			case 1:
+				Happiness += 10;
+				Look += 5;
+				answer = 0; eventCheck = false;
+				break;
+			case 2:
+				Look -= 5;
+				Happiness -= 10;
+				answer = 0; eventCheck = false;
+				break;
+			}
+			break;
+		case 17: //done
+			switch (answer)
+			{
+			case 1:
+				Happiness -= 10;
+				Moral -= 10;
+				Look -= 10;
+				answer = 0; eventCheck = false;
+				break;
+			case 2:
+				Look += 5;
+				Happiness += 5;
+				answer = 0; eventCheck = false;
+				break;
+			}
+			break;
+		case 18: //done
+			switch (answer)
+			{
+			case 1:
+				Happiness += 10;
+				Health += 10;
+				Look += 10;
+				answer = 0; eventCheck = false;
+				break;
+			case 2:
+				Health -= 10;
+				Happiness -= 10;
+				answer = 0; eventCheck = false;
+				break;
+			}
+			break;
+		case 19: //done
+			switch (answer)
+			{
+			case 1:
+				Happiness += 10;
+				Look += 5;
+				answer = 0; eventCheck = false;
+				break;
+			case 2:
+				Look -= 5;
+				Happiness -= 510;
+				answer = 0; eventCheck = false;
+				break;
+			}
+			break;
+		case 20: //done
+			switch (answer)
+			{
+			case 1:
+				Happiness += 20;
+				answer = 0; eventCheck = false;
+				break;
+			case 2:
+				Happiness -= 20;
+				answer = 0; eventCheck = false;
+				break;
+			}
+			break;
+		case 21: //done
+			switch (answer)
+			{
+			case 1:
+				Happiness += 10;
+				Look += 10;
+				Smart += 20;
+				answer = 0; eventCheck = false;
+				break;
+			case 2:
+				Look -= 5;
+				Happiness -= 5;
+				Smart -= 10;
 				answer = 0; eventCheck = false;
 				break;
 			}
