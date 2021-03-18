@@ -39,7 +39,7 @@ private:
 
     Button* eventTextButton;
 
-   
+
     //(data)
     int age = 0;
 
@@ -57,14 +57,14 @@ private:
     std::string EVspacial[] = { "","" };*/
 
     //eventCount
-    int babyEvent = 11;
-    int childEvent = 11;
+    int babyEvent = 13;
+    int childEvent = 15;
     //int primaryEvent = 2;
-    int seccondaryEvent = 2;
-    int bachelorEvent = 3;
-    int primaryAdultEvent = 3;
-    int secondaryAdultEvent = 3;
-    int elderlyEvent = 5;
+    int seccondaryEvent = 16;
+    int bachelorEvent = 22;
+    int primaryAdultEvent = 15;
+    int secondaryAdultEvent = 15;
+    int elderlyEvent = 15;
 
     int specialEvent = 5;
 
@@ -79,7 +79,7 @@ private:
     std::string eventSelectText3;
     std::string eventSelectText4;
 
-    
+
 
 
 public:
@@ -95,7 +95,7 @@ public:
     int eventRandom();
 
     void creatEvent(int Evnow);
-
+    int cheak(int base,int sub);
 
 
     //update
@@ -104,7 +104,6 @@ public:
     void updateText();
     void updateAge();
     void updateAnswer();
-    void updateLog();
 
     void update(const float& dt);
 
