@@ -1,0 +1,63 @@
+#include "MainMenuState.h"
+
+
+MainMenuState::MainMenuState(sf::RenderWindow* window, std::stack<State*>* states)
+	:State(window, states)
+{
+	this->initFont();
+	this->initbg();
+	
+	//(x, y, width, height, font, "text", text size , idle color, hover color, active color, text color)
+	this->gamestate_btn = new Button(465, 350, 150, 50, &this->font, "NEW GAME", 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	this->acheivment_btn = new Button(465, 450, 150, 50, &this->font, "ACHEIVMENT", 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+	this->exit_btn = new Button(465, 550, 150, 50, &this->font, "EXIT", 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
+
+	backgroundTexture.loadFromFile("bgMainmanu.jpg");
+
+	this->Background.setSize(sf::Vector2f(1080, 720));
+
+	this->Background.setTexture(&backgroundTexture);
+
+	std::cout << "\nStarting MainMenuState!\n";
+
+
+}
+
+
+void MainMenuState::update(const float& dt)
+{
+	for (int i = 0; i < 11; i++)
+	{
+		background[i].Update(dt);
+		background2[i].Update(dt);
+	}
+	
+	this->updateMousePos();
+
+	this->updateButtons();
+	this->updateInputs(dt);
+
+	//system("cls");
+	//std::cout << mousePos.x << " " << mousePos.y << "\n";
+
+
+}
+
+
+
+void MainMenuState::render(sf::RenderTarget* target)
+{
+	if (!target)
+		target = window;
+	
+	target->draw(this->Background);
+	for (int i = 0; i < 11; i++)
+	{
+		background[i].Draw(*window);
+		background2[i].Draw(*window);
+	}
+	this->gamestate_btn->renderButton(target);
+	this->acheivment_btn->renderButton(target);
+	this->exit_btn->renderButton(target);
+
+}

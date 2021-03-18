@@ -1,0 +1,28 @@
+#include "Background.h";
+
+public:
+{
+
+	sf::Texture cloudy[1];
+	sf::Texture bgtextture[11];
+	sf::Texture bgtextture2[11];
+	std::vector<Backgrounds> background;
+	std::vector<Backgrounds> background2;
+
+	sf::RenderWindow* window;
+	std::stack<State*>* states;
+	State(sf::RenderWindow* window, std::stack<State*>* states);
+	virtual ~State();
+
+	const bool& getQuit() const;
+
+	virtual void checkForQuit();
+
+	virtual void initFont();
+	virtual void initbg();
+	virtual void endState() = 0;
+	virtual void updateMousePos();
+	virtual void updateInputs(const float& dt) = 0;
+	virtual void update(const float& dt) = 0;
+	virtual void render(sf::RenderTarget* target = NULL) = 0;
+};
