@@ -9,6 +9,7 @@
 #include <sstream>
 #include <stack>
 #include <map>
+#include "background.h"
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
@@ -21,8 +22,8 @@ class State
 private:
 
 protected:
-	
-	sf::RenderWindow* window;
+
+	//sf::RenderWindow* window;
 	std::vector<sf::Texture> textures;
 	bool quit;
 
@@ -35,15 +36,22 @@ protected:
 
 
 public:
+	sf::Texture bgtextture[11];
+	sf::Texture bgtextture2[11];
+	std::vector<Backgrounds> background;
+	std::vector<Backgrounds> background2;
+
+	sf::RenderWindow* window;
 	std::stack<State*>* states;
 	State(sf::RenderWindow* window, std::stack<State*>* states);
 	virtual ~State();
 
 	const bool& getQuit() const;
 
-	virtual void checkForQuit(); 
+	virtual void checkForQuit();
 
 	virtual void initFont();
+	virtual void initbg();
 	virtual void endState() = 0;
 	virtual void updateMousePos();
 	virtual void updateInputs(const float& dt) = 0;

@@ -4,6 +4,7 @@ MainMenuState::MainMenuState(sf::RenderWindow* window, std::stack<State*>* state
 	:State(window, states)
 {
 	this->initFont();
+	this->initbg();
 
 	//(x, y, width, height, font, "text", text size , idle color, hover color, active color, text color)
 	this->gamestate_btn = new Button(465, 350, 150, 50, &this->font, "NEW GAME", 25, sf::Color(70, 70, 70, 200), sf::Color(150, 150, 150, 200), sf::Color(20, 20, 20, 200), sf::Color::White);
@@ -46,15 +47,15 @@ void MainMenuState::endState()
 
 void MainMenuState::updateButtons()
 {
-	
+
 	if (htpCheck == false)
 	{
 		this->gamestate_btn->update(this->mousePosView);
 		this->acheivment_btn->update(this->mousePosView);
 		this->exit_btn->update(this->mousePosView);
 	}
-	
-	
+
+
 	this->backToState_btn->update(this->mousePosView);
 
 	if (this->gamestate_btn->isPressed())
@@ -91,6 +92,11 @@ void MainMenuState::updateInputs(const float& dt)
 
 void MainMenuState::update(const float& dt)
 {
+	for (int i = 0; i < 11; i++)
+	{
+		background[i].Update(dt);
+		background2[i].Update(dt);
+	}
 	this->updateMousePos();
 
 	this->updateButtons();
@@ -110,6 +116,11 @@ void MainMenuState::render(sf::RenderTarget* target)
 		target = window;
 
 	target->draw(this->Background);
+	for (int i = 0; i < 11; i++)
+	{
+		background[i].Draw(*window);
+		background2[i].Draw(*window);
+	}
 
 	this->gamestate_btn->renderButton(target);
 	this->acheivment_btn->renderButton(target);
